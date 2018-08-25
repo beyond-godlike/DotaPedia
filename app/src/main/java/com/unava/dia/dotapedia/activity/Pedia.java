@@ -49,9 +49,21 @@ public class Pedia extends AppCompatActivity {
         Hero h3 = new Hero();
         h3.name = "Axe";
 
+        Hero h4 = new Hero();
+        h4.name = "Beastmaster";
+
+        Hero h5 = new Hero();
+        h5.name = "Brewmaster";
+
+        Hero h6 = new Hero();
+        h6.name = "Pugna";
+
 
         heroList.add(h1);
         heroList.add(h2);
         heroList.add(h3);
+        heroList.add(h4);
+        heroList.add(h5);
+        heroList.add(h6);
     }
 }

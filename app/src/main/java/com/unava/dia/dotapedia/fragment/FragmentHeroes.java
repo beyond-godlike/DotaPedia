@@ -20,28 +20,25 @@ public class FragmentHeroes extends Fragment {
     RecyclerView rv;
 
     private RecyclerView.Adapter adapter;
-    RecyclerView.LayoutManager mLayoutManager;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        heroes = Pedia.getHeroList();
-
         View rootView = inflater.inflate(R.layout.fragment_heroes, container, false);
 
-        initRecyclerVew(rootView);
+        // достаем ссылку на RecyclerView
+        rv = (RecyclerView)rootView.findViewById(R.id.rv);
+
+        // Устанавливаем LayoutManager
+        rv.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+        // данные для RecyclerView
+        heroes = Pedia.getHeroList();
+
+        // создаем адаптер
+        MyAdapter adapter = new MyAdapter(heroes);
+        rv.setAdapter(adapter);
+
         return rootView;
     }
-
-    private void initRecyclerVew(View rootView) {
-        rv = rootView.findViewById(R.id.rv);
-        rv.setHasFixedSize(true);
-
-        mLayoutManager = new LinearLayoutManager(rootView.getContext());
-        rv.setLayoutManager(mLayoutManager);
-
-        adapter = new MyAdapter(heroes);
-        rv.setAdapter(adapter);
-    }
-
 
 }

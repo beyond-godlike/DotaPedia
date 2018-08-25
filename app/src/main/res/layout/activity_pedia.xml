@@ -12,20 +12,18 @@
 
     <fragment
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:name="com.unava.dia.dotapedia.fragment.FragmentHeroes"
+        android:id="@+id/fragment1"
         android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="18dp"
-        android:id="@+id/fragment1" />
+        android:layout_alignParentStart="true" />
 
     <fragment
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:name="com.unava.dia.dotapedia.fragment.FragmentInformation"
-        android:layout_alignTop="@+id/fragment1"
-        android:layout_toEndOf="@+id/fragment1"
-        android:layout_marginStart="42dp"
-        android:id="@+id/fragment2" />
+        android:id="@+id/fragment2"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true" />
 
 </RelativeLayout>

@@ -15,7 +15,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.Pedia"></activity>
+        <activity android:name=".activity.Pedia" />
+        <activity android:name=".activity.CardViewActivity"></activity>
     </application>
 
 </manifest>
