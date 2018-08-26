@@ -1,14 +1,15 @@
 package com.unava.dia.dotapedia.adapters;
 
+import android.content.Context;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.unava.dia.dotapedia.R;
+import com.unava.dia.dotapedia.RecyclerViewClickListener;
 import com.unava.dia.dotapedia.data.Hero;
 
 import java.util.List;
@@ -19,24 +20,27 @@ import java.util.List;
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
     List<Hero> heroes;
+    private RecyclerViewClickListener mListener;
 
     //ctor
-    public MyAdapter(List<Hero> heroes) {
+    public MyAdapter(List<Hero> heroes, RecyclerViewClickListener listener) {
         this.heroes = heroes;
+        this.mListener = listener;
     }
 
     @Override
     public MyAdapter.MyViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
-        //View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.rv_layout, viewGroup, false);
+        Context context = viewGroup.getContext();
         View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.rv_layout,null);
 
-        return new MyViewHolder(v);
+        return new MyViewHolder(v, mListener);
     }
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int i) {
         holder.heroName.setText(heroes.get(i).name);
     }
+
 
     @Override
     public void onAttachedToRecyclerView(RecyclerView rv) {
@@ -56,19 +60,21 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         public CardView cv;
         public TextView heroName;
 
+        private RecyclerViewClickListener mListener;
 
-        public MyViewHolder(View v) {
+
+        public MyViewHolder(View v, RecyclerViewClickListener listener) {
             super(v);
-            v.setOnClickListener(this);
 
+            mListener = listener;
             cv = v.findViewById(R.id.cv);
 
             heroName = v.findViewById(R.id.hero_name);
         }
 
         @Override
-        public void onClick(View v) {
-            Log.d("LOG", "Был нажат " + v.getId());
+        public void onClick(View view) {
+            mListener.onClick(view, getAdapterPosition());
         }
     }
 

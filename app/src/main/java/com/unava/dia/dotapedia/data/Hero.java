@@ -7,13 +7,44 @@ package com.unava.dia.dotapedia.data;
 public class Hero {
     public String name;
 
-    public Integer strength = 0;
-    public Integer agility = 0;
-    public Integer intelligence = 0;
+    public String strength = "";
+    public String agility = "";
+    public String intelligence = "";
 
-    public Integer baseDamage = 0;
-    public Integer armor = 0;
-    public Integer speed = 0;
+    public String baseDamage = "";
+    public String armor = "";
+    public String speed = "";
 
     public String history;
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setStrength(String strength) {
+        this.strength = strength;
+    }
+    public void setAgility(String agility) {
+        this.agility = agility;
+    }
+    public void setIntelligence(String intelligence) {
+        this.intelligence = intelligence;
+    }
+
+
+    public void setDamage(String damage) {
+        this.baseDamage = damage;
+    }
+    public void setArmor(String armor) {
+        this.armor = armor;
+    }
+    public void setSpeed(String speed) {
+        this.speed = speed;
+    }
+
+
+    public void setHistory(String history) {
+        this.history = history;
+    }
+
 }
