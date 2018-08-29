@@ -60,6 +60,7 @@ public class Pedia extends AppCompatActivity {
                 .commit();
 
         Log.d("111", new Integer(heroList.size()).toString());
+
     }
 
     @Override
