@@ -1,23 +1,19 @@
 package com.unava.dia.dotapedia.activity;
 
+import android.app.Fragment;
+import android.os.Parcelable;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
-import android.widget.Toast;
 
 import com.unava.dia.dotapedia.R;
-import com.unava.dia.dotapedia.RecyclerViewClickListener;
-import com.unava.dia.dotapedia.adapters.MyAdapter;
 import com.unava.dia.dotapedia.data.Hero;
-import com.unava.dia.dotapedia.fragment.FragmentHeroes;
 import com.unava.dia.dotapedia.fragment.FragmentInformation;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.List;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
@@ -37,7 +33,7 @@ public class Pedia extends AppCompatActivity {
         ButterKnife.bind(this);
 
         if(savedInstanceState != null) {
-            heroList = (ArrayList<Hero>) savedInstanceState.getSerializable("HEROES_LIST");
+            heroList = savedInstanceState.getParcelableArrayList("HEROES_LIST");
         }
         else {
             // load list first time
@@ -51,19 +47,25 @@ public class Pedia extends AppCompatActivity {
 
     public void setData() {
         Bundle bundle = new Bundle();
-        bundle.putSerializable("HEROES_LIST", heroList);
+        bundle.putParcelableArrayList("HEROES_LIST", heroList);
 
+        Fragment fragment1 = getFragmentManager().findFragmentById(R.id.fragment1);
 
-        FragmentHeroes f = (FragmentHeroes) getSupportFragmentManager().findFragmentById(R.id.fragment1);
-        f.setArguments(bundle);
-        Log.d("sss", new Integer(heroList.size()).toString());
-        f.setHeroes(heroList);
+        //Passing heroes via a Bundle
+        bundle.putParcelableArrayList("HEROES_LIST", (ArrayList<? extends Parcelable>) heroList);
+        fragment1.setArguments(bundle);
+
+        getFragmentManager().beginTransaction()
+                .replace(R.id.fragment1, fragment1)
+                .commit();
+
+        Log.d("111", new Integer(heroList.size()).toString());
     }
 
     @Override
     protected void onSaveInstanceState(Bundle ourState) {
         super.onSaveInstanceState(ourState);
-        ourState.putSerializable("HEROES_LIST", heroList);
+        ourState.putParcelableArrayList("HEROES_LIST", heroList);
     }
 
     public void onHeroSelected(int i) {

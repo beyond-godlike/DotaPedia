@@ -1,10 +1,13 @@
 package com.unava.dia.dotapedia.data;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 /**
  * Created by Dia on 24.08.2018.
  */
 
-public class Hero {
+public class Hero implements Parcelable {
     public String name;
 
     public String strength = "";
@@ -16,6 +19,26 @@ public class Hero {
     public String speed = "";
 
     public String history;
+
+    // обычный конструктор
+    public  Hero() {
+
+    }
+
+    // конструктор, считывающий данные из Parcel
+    private Hero (Parcel in) {
+        name = in.readString();
+
+        strength = in.readString();
+        agility = in.readString();
+        intelligence = in.readString();
+
+        baseDamage = in.readString();
+        armor = in.readString();
+        speed = in.readString();
+
+        history = in.readString();
+    }
 
     public void setName(String name) {
         this.name = name;
@@ -47,4 +70,36 @@ public class Hero {
         this.history = history;
     }
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(name);
+
+        dest.writeString(strength);
+        dest.writeString(agility);
+        dest.writeString(intelligence);
+
+        dest.writeString(baseDamage);
+        dest.writeString(armor);
+        dest.writeString(speed);
+
+        dest.writeString(history);
+    }
+
+    public static final Parcelable.Creator<Hero> CREATOR = new Parcelable.Creator<Hero>() {
+
+        @Override
+        public Hero createFromParcel(Parcel source) {
+            return new Hero (source);
+        }
+
+        @Override
+        public Hero[] newArray(int size) {
+            return new Hero[size];
+        }
+    };
 }

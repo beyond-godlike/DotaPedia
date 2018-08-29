@@ -1,8 +1,9 @@
 package com.unava.dia.dotapedia.fragment;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
+import android.app.Fragment;
+import android.app.FragmentManager;
+import android.os.Parcelable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -18,14 +19,20 @@ import com.unava.dia.dotapedia.data.Hero;
 import java.util.ArrayList;
 
 public class FragmentHeroes extends Fragment {
-    ArrayList<Hero> heroes;
+    ArrayList<Hero> heroes = new ArrayList<>();
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        // достаем список из bundle
+        // почему он тут null
+        heroes = getArguments().getParcelableArrayList("HEROES_LIST");
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_heroes, container, false);
-
-        // достаем список из bundle
-        heroes = (ArrayList<Hero>) savedInstanceState.getSerializable("HEROES_LIST");
 
         // он уже тут NULL
         Log.d("sss", new Integer(heroes.size()).toString());
