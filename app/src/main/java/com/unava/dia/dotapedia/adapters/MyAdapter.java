@@ -1,81 +1,60 @@
 package com.unava.dia.dotapedia.adapters;
 
 import android.content.Context;
-import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
+import android.widget.Toast;
 
 import com.unava.dia.dotapedia.R;
 import com.unava.dia.dotapedia.RecyclerViewClickListener;
 import com.unava.dia.dotapedia.data.Hero;
 
-import java.util.List;
+import java.util.ArrayList;
 
 /**
- * Created by Dia on 24.08.2018.
+ * Created by Dia on 29.08.2018.
  */
-public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
-    List<Hero> heroes;
-    private RecyclerViewClickListener mListener;
+public class MyAdapter extends RecyclerView.Adapter<MyViewHolder> {
+    Context c;
+    ArrayList<Hero> heroes;
 
-    //ctor
-    public MyAdapter(List<Hero> heroes, RecyclerViewClickListener listener) {
-        this.heroes = heroes;
-        this.mListener = listener;
+    public MyAdapter(Context c, ArrayList<Hero> h) {
+        heroes = new ArrayList<>();
+
+        this.c = c;
+        this.heroes = h;
     }
 
     @Override
-    public MyAdapter.MyViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
-        Context context = viewGroup.getContext();
-        View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.rv_layout,null);
+    public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        //View v = LayoutInflater.from(c).inflate(R.layout.model,parent,false);
+        View v = LayoutInflater.from(c).inflate(R.layout.model, null);
 
-        return new MyViewHolder(v, mListener);
+        return new MyViewHolder(v);
     }
 
     @Override
-    public void onBindViewHolder(MyViewHolder holder, int i) {
-        holder.heroName.setText(heroes.get(i).name);
-    }
+    public void onBindViewHolder(final MyViewHolder holder, int position) {
 
+        //BIND DATA
+        holder.nameTxt.setText(heroes.get(position).name);
 
-    @Override
-    public void onAttachedToRecyclerView(RecyclerView rv) {
-        super.onAttachedToRecyclerView(rv);
+        //ITEM CLICK
+        holder.setItemClickListener(new RecyclerViewClickListener() {
+            @Override
+            public void onItemClick(int pos) {
+                //Toast.makeText(c.getApplicationContext(), languages.get(pos), Toast.LENGTH_SHORT).show();
+                holder.nameTxt.setText("CLICKED");
+            }
+        });
+
     }
 
     @Override
     public int getItemCount() {
-        if (heroes != null) return heroes.size();
-        else
-        {
-            return -1;
-        }
+        return heroes.size();
     }
-
-    public static class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        public CardView cv;
-        public TextView heroName;
-
-        private RecyclerViewClickListener mListener;
-
-
-        public MyViewHolder(View v, RecyclerViewClickListener listener) {
-            super(v);
-
-            mListener = listener;
-            cv = v.findViewById(R.id.cv);
-
-            heroName = v.findViewById(R.id.hero_name);
-        }
-
-        @Override
-        public void onClick(View view) {
-            mListener.onClick(view, getAdapterPosition());
-        }
-    }
-
 }

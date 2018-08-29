@@ -12,6 +12,7 @@ import com.unava.dia.dotapedia.R;
 import com.unava.dia.dotapedia.activity.Pedia;
 import com.unava.dia.dotapedia.data.Hero;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class FragmentInformation extends Fragment {
@@ -25,7 +26,6 @@ public class FragmentInformation extends Fragment {
         rootView = inflater.inflate(R.layout.fragment_information, container, false);
 
         // загружаем массив из ресурсов
-        heroList = Pedia.getHeroList();
 
         return rootView;
     }

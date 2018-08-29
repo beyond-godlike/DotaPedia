@@ -5,54 +5,44 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.unava.dia.dotapedia.R;
-import com.unava.dia.dotapedia.RecyclerViewClickListener;
 import com.unava.dia.dotapedia.activity.Pedia;
 import com.unava.dia.dotapedia.adapters.MyAdapter;
 import com.unava.dia.dotapedia.data.Hero;
 
-import java.util.List;
+import java.util.ArrayList;
 
 public class FragmentHeroes extends Fragment {
-    List<Hero> heroes;
-    RecyclerView rv;
+    ArrayList<Hero> heroes;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_heroes, container, false);
 
-        // достаем ссылку на RecyclerView
-        rv = (RecyclerView)rootView.findViewById(R.id.rv);
+        // достаем список из bundle
+        heroes = (ArrayList<Hero>) savedInstanceState.getSerializable("HEROES_LIST");
 
-        // Устанавливаем LayoutManager
-        rv.setLayoutManager(new LinearLayoutManager(getActivity()));
+        // он уже тут NULL
+        Log.d("sss", new Integer(heroes.size()).toString());
 
-        // данные для RecyclerView
-        heroes = Pedia.getHeroList();
+        //SET UP RECYCLERVIEW
+        RecyclerView rv = (RecyclerView) rootView.findViewById(R.id.rv);
+        rv.setLayoutManager(new LinearLayoutManager(rootView.getContext()));
 
-        // как бы тут нужно повесить лиснер на ресайклер вью
-        // это должно быть в фрагменте
-
-        RecyclerViewClickListener listener = new RecyclerViewClickListener() {
-            @Override
-            public void onClick(View view, int position) {
-                Toast toast =  Toast.makeText(getContext(),
-                        "Position " + position, Toast.LENGTH_SHORT);
-                toast.show();
-                // вызываем onHeroSelected(position)
-            }
-        };
-
-        // создаем адаптер
-        MyAdapter adapter = new MyAdapter(heroes, listener);
+        //ADAPTER
+        MyAdapter adapter = new MyAdapter(rootView.getContext(), heroes);
         rv.setAdapter(adapter);
 
         return rootView;
     }
 
+    public ArrayList<Hero> setHeroes(ArrayList<Hero> h) {
+        heroes = h;
+        return  heroes;
+    }
 }

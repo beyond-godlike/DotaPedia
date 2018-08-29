@@ -3,6 +3,7 @@ package com.unava.dia.dotapedia.activity;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -25,15 +26,8 @@ import org.xmlpull.v1.XmlPullParserFactory;
 import butterknife.ButterKnife;
 
 public class Pedia extends AppCompatActivity {
-    private static List<Hero> heroList;
+    private ArrayList<Hero> heroList;
     private Hero temp;
-
-    /*
-    final String[] heroes = new String[] {
-            "Abbaddon", "Alchemist", "Axe", "", "",
-            "", ""
-    };
-    */
 
 
     @Override
@@ -42,9 +36,33 @@ public class Pedia extends AppCompatActivity {
         setContentView(R.layout.activity_pedia);
         ButterKnife.bind(this);
 
-        // TODO заполнить из файла
-        initHeroList();
+        if(savedInstanceState != null) {
+            heroList = (ArrayList<Hero>) savedInstanceState.getSerializable("HEROES_LIST");
+        }
+        else {
+            // load list first time
+            initHeroList();
+        }
 
+        // pass into a fragment
+        setData();
+
+    }
+
+    public void setData() {
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("HEROES_LIST", heroList);
+
+
+        FragmentHeroes f = (FragmentHeroes) getSupportFragmentManager().findFragmentById(R.id.fragment1);
+        f.setArguments(bundle);
+        //f.setHeroes(heroList);
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle ourState) {
+        super.onSaveInstanceState(ourState);
+        ourState.putSerializable("HEROES_LIST", heroList);
     }
 
     public void onHeroSelected(int i) {
@@ -55,17 +73,12 @@ public class Pedia extends AppCompatActivity {
         if (fragmentInformation != null) {
             fragmentInformation.onHeroClicked(i);
         }
-            Toast toast = Toast.makeText(getApplicationContext(),
-                    i, Toast.LENGTH_SHORT);
-
-            toast.show();
-    }
-
-    public static List<Hero> getHeroList(){
-        return heroList;
     }
 
     public void initHeroList() {
+        heroList = new ArrayList<>();
+        heroList.clear();
+
         doParse("heroes.xml");
     }
     // инстанс парсера
@@ -81,6 +94,7 @@ public class Pedia extends AppCompatActivity {
             parser.setFeature(XmlPullParser.FEATURE_PROCESS_NAMESPACES, false);
             parser.setInput(in_s, null);
 
+            // парсим xml
             parseNewFile(parser);
         } catch (XmlPullParserException e) {
             e.printStackTrace();
@@ -96,7 +110,7 @@ public class Pedia extends AppCompatActivity {
                 String name;
                 switch (eventType){
                     case XmlPullParser.START_DOCUMENT:
-                        heroList = new ArrayList<>();
+                        //heroList = new ArrayList<>();
                         break;
                     case XmlPullParser.START_TAG:
                         name = parser.getName();
