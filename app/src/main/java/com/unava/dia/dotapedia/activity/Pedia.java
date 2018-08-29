@@ -56,7 +56,8 @@ public class Pedia extends AppCompatActivity {
 
         FragmentHeroes f = (FragmentHeroes) getSupportFragmentManager().findFragmentById(R.id.fragment1);
         f.setArguments(bundle);
-        //f.setHeroes(heroList);
+        Log.d("sss", new Integer(heroList.size()).toString());
+        f.setHeroes(heroList);
     }
 
     @Override
