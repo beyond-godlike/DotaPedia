@@ -88,6 +88,7 @@ public class Pedia extends AppCompatActivity {
         }
     }
 
+
     public void initHeroList() {
         doParse("heroes.xml");
     }
