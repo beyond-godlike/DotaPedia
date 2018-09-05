@@ -12,7 +12,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.unava.dia.dotapedia.R;
-import com.unava.dia.dotapedia.activity.Pedia;
 import com.unava.dia.dotapedia.adapters.MyAdapter;
 import com.unava.dia.dotapedia.data.Hero;
 

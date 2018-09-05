@@ -9,6 +9,7 @@ import android.util.Log;
 
 import com.unava.dia.dotapedia.R;
 import com.unava.dia.dotapedia.data.Hero;
+import com.unava.dia.dotapedia.fragment.FragmentHeroes;
 import com.unava.dia.dotapedia.fragment.FragmentInformation;
 
 import java.io.IOException;
@@ -23,7 +24,6 @@ import butterknife.ButterKnife;
 
 public class Pedia extends AppCompatActivity {
     private ArrayList<Hero> heroList;
-    private Hero temp;
 
 
     @Override
@@ -38,6 +38,7 @@ public class Pedia extends AppCompatActivity {
         else {
             // load list first time
             initHeroList();
+            //init();
         }
 
         // pass into a fragment
@@ -45,14 +46,22 @@ public class Pedia extends AppCompatActivity {
 
     }
 
+    void init() {
+        heroList = new ArrayList<>();
+        Hero h1 = new Hero("ddd", "ww", " dd", "dd ","dd", "dd", "dd ", " dd");
+        heroList.add(h1);
+        heroList.add(h1);
+        heroList.add(h1);
+        heroList.add(h1);
+        heroList.add(h1);
+        heroList.add(h1);
+    }
+
     public void setData() {
         Bundle bundle = new Bundle();
         bundle.putParcelableArrayList("HEROES_LIST", heroList);
 
-        Fragment fragment1 = getFragmentManager().findFragmentById(R.id.fragment1);
-
-        //Passing heroes via a Bundle
-        bundle.putParcelableArrayList("HEROES_LIST", (ArrayList<? extends Parcelable>) heroList);
+        FragmentHeroes fragment1 = new FragmentHeroes();
         fragment1.setArguments(bundle);
 
         getFragmentManager().beginTransaction()
@@ -80,9 +89,6 @@ public class Pedia extends AppCompatActivity {
     }
 
     public void initHeroList() {
-        heroList = new ArrayList<>();
-        heroList.clear();
-
         doParse("heroes.xml");
     }
     // инстанс парсера
@@ -108,6 +114,22 @@ public class Pedia extends AppCompatActivity {
     }
 
     private void parseNewFile(XmlPullParser parser) throws IOException, XmlPullParserException {
+
+        String tempName = "";
+
+        String strength = "";
+        String agility = "";
+        String intelligence = "";
+
+        String baseDamage = "";
+        String armor = "";
+        String speed = "";
+
+        String history = "";
+
+        Hero tempHero = null;
+        heroList = new ArrayList<>();
+
         int eventType = parser.getEventType();
         while (eventType != XmlPullParser.END_DOCUMENT){
             {
@@ -119,49 +141,53 @@ public class Pedia extends AppCompatActivity {
                     case XmlPullParser.START_TAG:
                         name = parser.getName();
                         if (name.equals("hero")){
-                            temp = new Hero();
+                            tempHero = null;
                         }
-                        else if (temp != null)
+                        else if (tempHero == null)
                         {
                             if(name.equals("name"))
                             {
-                                temp.setName(parser.nextText());
+                                tempName = parser.nextText();
                             }
                             else if(name.equals("strength"))
                             {
-                                temp.setStrength(parser.nextText());
+                                strength = parser.nextText();
                             }
                             else if (name.equals("agility"))
                             {
-                                temp.setAgility(parser.nextText());
+                                agility = parser.nextText();
                             }
                             else if (name.equals("intelligence"))
                             {
-                                temp.setIntelligence(parser.nextText());
+                                intelligence = parser.nextText();
                             }
                             else if (name.equals("damage"))
                             {
-                                temp.setDamage(parser.nextText());
+                               baseDamage = parser.nextText();
                             }
                             else if (name.equals("armor"))
                             {
-                                temp.setArmor(parser.nextText());
+                                armor = parser.nextText();
                             }
                             else if (name.equals("speed"))
                             {
-                                temp.setSpeed(parser.nextText());
+                                speed = parser.nextText();
                             }
                             else if (name.equals("history"))
                             {
-                                temp.setHistory(parser.nextText());
+                                history = parser.nextText();
                             }
+
+                            tempHero = new Hero(tempName, strength, agility, intelligence, baseDamage
+                            , armor, speed, history);
+
                         }
                         break;
                     case XmlPullParser.END_TAG:
                         name = parser.getName();
-                        if (name.equalsIgnoreCase("hero") && temp != null)
+                        if (name.equalsIgnoreCase("hero") && tempHero != null)
                         {
-                            heroList.add(temp);
+                            heroList.add(tempHero);
                         }
                 }
                 eventType = parser.next();

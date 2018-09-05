@@ -10,14 +10,12 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.unava.dia.dotapedia.activity.Pedia">
 
-    <fragment
+    <FrameLayout
         android:layout_width="150dp"
         android:layout_height="match_parent"
-        android:name="com.unava.dia.dotapedia.fragment.FragmentHeroes"
         android:id="@+id/fragment1"
         android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        tools:layout="@layout/fragment_heroes" />
+        android:layout_alignParentStart="true"/>
 
     <fragment
         android:layout_width="wrap_content"

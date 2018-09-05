@@ -3,12 +3,13 @@ package com.unava.dia.dotapedia.data;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.io.Serializable;
+
 /**
  * Created by Dia on 24.08.2018.
  */
-
-public class Hero implements Parcelable {
-    public String name;
+public class Hero implements Parcelable, Serializable {
+    public String name = "";
 
     public String strength = "";
     public String agility = "";
@@ -18,27 +19,23 @@ public class Hero implements Parcelable {
     public String armor = "";
     public String speed = "";
 
-    public String history;
+    public String history = "";
 
-    // обычный конструктор
-    public  Hero() {
+    public  Hero(String name, String strength, String agility, String intelligence
+    , String baseDamage, String speed, String armor, String history) {
+        this.name = name;
 
+        this.strength = strength;
+        this.agility = agility;
+        this.intelligence = intelligence;
+
+        this.baseDamage = baseDamage;
+        this.armor = armor;
+        this.strength = speed;
+
+        this.history = history;
     }
 
-    // конструктор, считывающий данные из Parcel
-    private Hero (Parcel in) {
-        name = in.readString();
-
-        strength = in.readString();
-        agility = in.readString();
-        intelligence = in.readString();
-
-        baseDamage = in.readString();
-        armor = in.readString();
-        speed = in.readString();
-
-        history = in.readString();
-    }
 
     public void setName(String name) {
         this.name = name;
@@ -70,6 +67,19 @@ public class Hero implements Parcelable {
         this.history = history;
     }
 
+    //_______________________________________________________________________________________//
+
+    protected Hero(Parcel in) {
+        name = in.readString();
+        strength = in.readString();
+        agility = in.readString();
+        intelligence = in.readString();
+        baseDamage = in.readString();
+        armor = in.readString();
+        speed = in.readString();
+        history = in.readString();
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -78,23 +88,20 @@ public class Hero implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(name);
-
         dest.writeString(strength);
         dest.writeString(agility);
         dest.writeString(intelligence);
-
         dest.writeString(baseDamage);
         dest.writeString(armor);
         dest.writeString(speed);
-
         dest.writeString(history);
     }
 
+    @SuppressWarnings("unused")
     public static final Parcelable.Creator<Hero> CREATOR = new Parcelable.Creator<Hero>() {
-
         @Override
-        public Hero createFromParcel(Parcel source) {
-            return new Hero (source);
+        public Hero createFromParcel(Parcel in) {
+            return new Hero(in);
         }
 
         @Override
