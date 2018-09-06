@@ -25,7 +25,7 @@ public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClic
 
     public void setItemClickListener(RecyclerViewClickListener itemClickListener)
     {
-        this.itemClickListener=itemClickListener;
+        this.itemClickListener = itemClickListener;
     }
 
     @Override

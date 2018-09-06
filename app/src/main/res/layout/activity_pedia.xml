@@ -11,19 +11,17 @@
     tools:context="com.unava.dia.dotapedia.activity.Pedia">
 
     <FrameLayout
-        android:layout_width="150dp"
+        android:layout_width="160dp"
         android:layout_height="match_parent"
         android:id="@+id/fragment1"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"/>
 
-    <fragment
-        android:layout_width="wrap_content"
+    <FrameLayout
+        android:layout_width="600dp"
         android:layout_height="match_parent"
-        android:name="com.unava.dia.dotapedia.fragment.FragmentInformation"
         android:id="@+id/fragment2"
         android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        tools:layout="@layout/fragment_information" />
+        android:layout_alignParentEnd="true"/>
 
 </RelativeLayout>

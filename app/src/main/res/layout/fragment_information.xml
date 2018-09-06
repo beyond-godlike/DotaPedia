@@ -4,40 +4,61 @@
     android:layout_height="match_parent"
     tools:context="com.unava.dia.dotapedia.fragment.FragmentInformation">
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/hero_strength"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-    <TextView
-        android:id="@+id/hero_agility"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-    <TextView
-        android:id="@+id/hero_intelligence"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
 
-    <TextView
-        android:id="@+id/hero_damage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-    <TextView
-        android:id="@+id/hero_armor"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-    <TextView
-        android:id="@+id/hero_speed"
-        android:text="hero_speed"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/hero_strength"
+            android:gravity="top|center_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="hero_strength" />
+        <TextView
+            android:id="@+id/hero_agility"
+            android:layout_below="@+id/hero_strength"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="hero_agility" />
+        <TextView
+            android:id="@+id/hero_intelligence"
+            android:layout_below="@+id/hero_agility"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="hero_intelligence" />
 
-    <TextView
-        android:id="@+id/hero_history"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/hero_damage"
+            android:layout_below="@+id/hero_intelligence"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="hero_damage" />
+
+        <TextView
+            android:id="@+id/hero_speed"
+            android:layout_below="@+id/hero_damage"
+            android:text="hero_speed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/hero_armor"
+            android:layout_below="@+id/hero_speed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="hero_armor" />
+
+        <TextView
+            android:id="@+id/hero_history"
+            android:layout_below="@+id/hero_armor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="hero_history" />
+
+    </RelativeLayout>
 
 </FrameLayout>

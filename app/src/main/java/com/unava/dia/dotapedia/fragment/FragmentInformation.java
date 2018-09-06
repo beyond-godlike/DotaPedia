@@ -2,54 +2,79 @@ package com.unava.dia.dotapedia.fragment;
 
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
+import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.unava.dia.dotapedia.R;
-import com.unava.dia.dotapedia.activity.Pedia;
 import com.unava.dia.dotapedia.data.Hero;
 
 import java.util.ArrayList;
-import java.util.List;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 public class FragmentInformation extends Fragment {
 
     View rootView;
-    private List<Hero> heroList;
+    ArrayList<Hero> heroes = new ArrayList<>();
+
+    @BindView(R.id.hero_strength) TextView strength;
+    @BindView(R.id.hero_agility) TextView agility;
+    @BindView(R.id.hero_intelligence) TextView intelligence;
+
+    @BindView(R.id.hero_damage) TextView damage;
+    @BindView(R.id.hero_speed) TextView speed;
+    @BindView(R.id.hero_armor) TextView armor;
+
+    @BindView(R.id.hero_history) TextView history;
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        // достаем список из bundle
+        heroes = getArguments().getParcelableArrayList("HEROES_LIST");
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        rootView = inflater.inflate(R.layout.fragment_information, container, false);
 
-        // загружаем массив из ресурсов
+        rootView = inflater.inflate(R.layout.fragment_information, container, false);
+        ButterKnife.bind(this, rootView);
+
+        setDefaultHero();
 
         return rootView;
     }
 
-    public void onHeroClicked(int i){
-        TextView strength = (TextView)rootView.findViewById(R.id.hero_strength);
-        TextView agility = (TextView)rootView.findViewById(R.id.hero_agility);
-        TextView intelligence = (TextView)rootView.findViewById(R.id.hero_intelligence);
+    public void setHero(int i) {
+        strength.setText(heroes.get(i).strength);
+        //agility.setText(heroes.get(i).agility);
+        agility.setText(new Integer(i).toString());
+        intelligence.setText(heroes.get(i).name);
 
-        TextView damage = (TextView)rootView.findViewById(R.id.hero_damage);
-        TextView speed = (TextView)rootView.findViewById(R.id.hero_speed);
-        TextView armor = (TextView)rootView.findViewById(R.id.hero_armor);
+        damage.setText(heroes.get(i).baseDamage);
+        speed.setText(heroes.get(i).speed);
+        armor.setText(heroes.get(i).armor);
 
-        TextView history = (TextView)rootView.findViewById(R.id.hero_history);
+        history.setText(heroes.get(i).history);
+    }
 
-        strength.setText(heroList.get(i).strength);
-        agility.setText(heroList.get(i).agility);
-        intelligence.setText(heroList.get(i).intelligence);
+    public void setDefaultHero() {
+        strength.setText(heroes.get(1).strength);;
+        agility.setText(heroes.get(1).agility);
+        intelligence.setText(heroes.get(1).intelligence);
 
-        damage.setText(heroList.get(i).baseDamage);
-        speed.setText(heroList.get(i).speed);
-        armor.setText(heroList.get(i).armor);
+        damage.setText(heroes.get(1).baseDamage);
+        speed.setText(heroes.get(1).speed);
+        armor.setText(heroes.get(1).armor);
 
-        history.setText(heroList.get(i).history);
+        history.setText(heroes.get(1).history);
+
     }
 
 }

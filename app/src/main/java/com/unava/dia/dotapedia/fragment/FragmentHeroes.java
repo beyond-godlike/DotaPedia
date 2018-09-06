@@ -2,8 +2,6 @@ package com.unava.dia.dotapedia.fragment;
 
 import android.os.Bundle;
 import android.app.Fragment;
-import android.app.FragmentManager;
-import android.os.Parcelable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -41,14 +39,9 @@ public class FragmentHeroes extends Fragment {
         rv.setLayoutManager(new LinearLayoutManager(rootView.getContext()));
 
         //ADAPTER
-        MyAdapter adapter = new MyAdapter(rootView.getContext(), heroes);
+        MyAdapter adapter = new MyAdapter(rootView.getContext(), heroes, getActivity());
         rv.setAdapter(adapter);
 
         return rootView;
-    }
-
-    public ArrayList<Hero> setHeroes(ArrayList<Hero> h) {
-        heroes = h;
-        return  heroes;
     }
 }

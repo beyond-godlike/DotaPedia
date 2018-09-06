@@ -1,5 +1,6 @@
 package com.unava.dia.dotapedia.adapters;
 
+import android.app.Activity;
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -20,17 +21,18 @@ import java.util.ArrayList;
 public class MyAdapter extends RecyclerView.Adapter<MyViewHolder> {
     Context c;
     ArrayList<Hero> heroes;
+    Activity activity;
 
-    public MyAdapter(Context c, ArrayList<Hero> h) {
+    public MyAdapter(Context c, ArrayList<Hero> h, Activity activity) {
         heroes = new ArrayList<>();
 
         this.c = c;
         this.heroes = h;
+        this.activity = activity;
     }
 
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        //View v = LayoutInflater.from(c).inflate(R.layout.model,parent,false);
         View v = LayoutInflater.from(c).inflate(R.layout.model, null);
 
         return new MyViewHolder(v);
@@ -43,11 +45,16 @@ public class MyAdapter extends RecyclerView.Adapter<MyViewHolder> {
         holder.nameTxt.setText(heroes.get(position).name);
 
         //ITEM CLICK
+        // ЛИСНЕР ПО КНОПКАМ КАРТОЧКИ
         holder.setItemClickListener(new RecyclerViewClickListener() {
             @Override
             public void onItemClick(int pos) {
-                //Toast.makeText(c.getApplicationContext(), languages.get(pos), Toast.LENGTH_SHORT).show();
-                holder.nameTxt.setText("CLICKED");
+                holder.nameTxt.setText(new Integer(holder.getAdapterPosition()).toString());
+                int buttonIndex = holder.getAdapterPosition();
+                // передать buttonIndex в Activity
+
+                RecyclerViewClickListener listener = (RecyclerViewClickListener) activity;
+                listener.onItemClick(buttonIndex);
             }
         });
 

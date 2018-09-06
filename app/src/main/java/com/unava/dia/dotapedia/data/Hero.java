@@ -22,7 +22,7 @@ public class Hero implements Parcelable, Serializable {
     public String history = "";
 
     public  Hero(String name, String strength, String agility, String intelligence
-    , String baseDamage, String speed, String armor, String history) {
+    , String baseDamage, String armor, String speed, String history) {
         this.name = name;
 
         this.strength = strength;
@@ -31,7 +31,7 @@ public class Hero implements Parcelable, Serializable {
 
         this.baseDamage = baseDamage;
         this.armor = armor;
-        this.strength = speed;
+        this.speed = speed;
 
         this.history = history;
     }

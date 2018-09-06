@@ -2,7 +2,7 @@ package com.unava.dia.dotapedia.activity;
 
 import android.app.Fragment;
 import android.os.Parcelable;
-import android.support.v4.app.FragmentManager;
+import android.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -11,6 +11,7 @@ import com.unava.dia.dotapedia.R;
 import com.unava.dia.dotapedia.data.Hero;
 import com.unava.dia.dotapedia.fragment.FragmentHeroes;
 import com.unava.dia.dotapedia.fragment.FragmentInformation;
+import com.unava.dia.dotapedia.RecyclerViewClickListener;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -22,7 +23,7 @@ import org.xmlpull.v1.XmlPullParserFactory;
 
 import butterknife.ButterKnife;
 
-public class Pedia extends AppCompatActivity {
+public class Pedia extends AppCompatActivity implements RecyclerViewClickListener {
     private ArrayList<Hero> heroList;
 
 
@@ -46,17 +47,6 @@ public class Pedia extends AppCompatActivity {
 
     }
 
-    void init() {
-        heroList = new ArrayList<>();
-        Hero h1 = new Hero("ddd", "ww", " dd", "dd ","dd", "dd", "dd ", " dd");
-        heroList.add(h1);
-        heroList.add(h1);
-        heroList.add(h1);
-        heroList.add(h1);
-        heroList.add(h1);
-        heroList.add(h1);
-    }
-
     public void setData() {
         Bundle bundle = new Bundle();
         bundle.putParcelableArrayList("HEROES_LIST", heroList);
@@ -70,6 +60,16 @@ public class Pedia extends AppCompatActivity {
 
         Log.d("111", new Integer(heroList.size()).toString());
 
+
+        Bundle bundle1 = new Bundle();
+        bundle1.putParcelableArrayList("HEROES_LIST", heroList);
+
+        FragmentInformation fragment2 = new FragmentInformation();
+        fragment2.setArguments(bundle1);
+
+        getFragmentManager().beginTransaction()
+                .replace(R.id.fragment2, fragment2)
+                .commit();
     }
 
     @Override
@@ -78,13 +78,20 @@ public class Pedia extends AppCompatActivity {
         ourState.putParcelableArrayList("HEROES_LIST", heroList);
     }
 
-    public void onHeroSelected(int i) {
+    @Override
+    public void onItemClick(int position) {
         // получаем ссылку на 2й фрагмент
-        FragmentManager fm = getSupportFragmentManager();
+        FragmentManager fm = getFragmentManager();
+
+        // Получаем ссылку на второй фрагмент по ID
         FragmentInformation fragmentInformation = (FragmentInformation)fm.findFragmentById(R.id.fragment2);
 
+        // Выводим нужную информацию
         if (fragmentInformation != null) {
-            fragmentInformation.onHeroClicked(i);
+            fragmentInformation.setHero(position);
+        }
+        else {
+
         }
     }
 
@@ -116,18 +123,6 @@ public class Pedia extends AppCompatActivity {
 
     private void parseNewFile(XmlPullParser parser) throws IOException, XmlPullParserException {
 
-        String tempName = "";
-
-        String strength = "";
-        String agility = "";
-        String intelligence = "";
-
-        String baseDamage = "";
-        String armor = "";
-        String speed = "";
-
-        String history = "";
-
         Hero tempHero = null;
         heroList = new ArrayList<>();
 
@@ -142,45 +137,45 @@ public class Pedia extends AppCompatActivity {
                     case XmlPullParser.START_TAG:
                         name = parser.getName();
                         if (name.equals("hero")){
-                            tempHero = null;
+                            tempHero = new Hero("", "", "", "", "", "", "", "");
                         }
-                        else if (tempHero == null)
+                        else if (tempHero != null)
                         {
-                            if(name.equals("name"))
+                            if(name.equals("hname"))
                             {
-                                tempName = parser.nextText();
+                                tempHero.name = parser.nextText();
                             }
                             else if(name.equals("strength"))
                             {
-                                strength = parser.nextText();
+                                tempHero.strength = parser.nextText();
                             }
                             else if (name.equals("agility"))
                             {
-                                agility = parser.nextText();
+                                tempHero.agility = parser.nextText();
                             }
                             else if (name.equals("intelligence"))
                             {
-                                intelligence = parser.nextText();
+                                tempHero.intelligence = parser.nextText();
                             }
                             else if (name.equals("damage"))
                             {
-                               baseDamage = parser.nextText();
+                                tempHero.baseDamage = parser.nextText();
                             }
                             else if (name.equals("armor"))
                             {
-                                armor = parser.nextText();
+                                tempHero.armor = parser.nextText();
                             }
                             else if (name.equals("speed"))
                             {
-                                speed = parser.nextText();
+                                tempHero.speed = parser.nextText();
                             }
                             else if (name.equals("history"))
                             {
-                                history = parser.nextText();
+                                tempHero.history = parser.nextText();
                             }
 
-                            tempHero = new Hero(tempName, strength, agility, intelligence, baseDamage
-                            , armor, speed, history);
+                            //tempHero = new Hero(tempName, tempStrength, tempAgility, tempIntelligence, baseDamage
+                            //, armor, speed, history);
 
                         }
                         break;
