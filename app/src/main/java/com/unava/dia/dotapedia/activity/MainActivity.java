@@ -23,5 +23,7 @@ public class MainActivity extends AppCompatActivity {
     public void onButtonPediaClicked(View view) {
         Intent intent = new Intent(MainActivity.this, Pedia.class);
         startActivity(intent);
+
+        // create a realm db?
     }
 }

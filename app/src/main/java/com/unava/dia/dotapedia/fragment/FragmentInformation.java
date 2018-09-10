@@ -1,11 +1,13 @@
 package com.unava.dia.dotapedia.fragment;
 
 
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.unava.dia.dotapedia.R;
@@ -31,6 +33,8 @@ public class FragmentInformation extends Fragment {
 
     @BindView(R.id.hero_history) TextView history;
 
+    @BindView(R.id.iw_agility) ImageView iw;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,10 +55,13 @@ public class FragmentInformation extends Fragment {
         return rootView;
     }
 
+    public void initView() {
+        iw.setImageBitmap(BitmapFactory.decodeResource(this.getResources(), R.drawable.agility));
+    }
+
     public void setHero(int i) {
         strength.setText(heroes.get(i).strength);
-        //agility.setText(heroes.get(i).agility);
-        agility.setText(new Integer(i).toString());
+        agility.setText(heroes.get(i).strength);
         intelligence.setText(heroes.get(i).name);
 
         damage.setText(heroes.get(i).baseDamage);
@@ -65,7 +72,7 @@ public class FragmentInformation extends Fragment {
     }
 
     public void setDefaultHero() {
-        strength.setText(heroes.get(1).strength);;
+        strength.setText(heroes.get(1).strength);
         agility.setText(heroes.get(1).agility);
         intelligence.setText(heroes.get(1).intelligence);
 

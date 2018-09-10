@@ -1,7 +1,5 @@
 package com.unava.dia.dotapedia.activity;
 
-import android.app.Fragment;
-import android.os.Parcelable;
 import android.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -9,6 +7,7 @@ import android.util.Log;
 
 import com.unava.dia.dotapedia.R;
 import com.unava.dia.dotapedia.data.Hero;
+import com.unava.dia.dotapedia.data.HeroImages;
 import com.unava.dia.dotapedia.fragment.FragmentHeroes;
 import com.unava.dia.dotapedia.fragment.FragmentInformation;
 import com.unava.dia.dotapedia.RecyclerViewClickListener;
@@ -22,9 +21,14 @@ import org.xmlpull.v1.XmlPullParserException;
 import org.xmlpull.v1.XmlPullParserFactory;
 
 import butterknife.ButterKnife;
+import io.realm.Realm;
+import io.realm.RealmResults;
 
 public class Pedia extends AppCompatActivity implements RecyclerViewClickListener {
     private ArrayList<Hero> heroList;
+    private RealmResults<HeroImages> listHeroImages;
+
+    private Realm realm;
 
 
     @Override
@@ -32,14 +36,16 @@ public class Pedia extends AppCompatActivity implements RecyclerViewClickListene
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pedia);
         ButterKnife.bind(this);
+        realm = Realm.getInstance(getApplicationContext());
 
         if(savedInstanceState != null) {
             heroList = savedInstanceState.getParcelableArrayList("HEROES_LIST");
+            // we need a realm db
         }
         else {
             // load list first time
+            listHeroImages = realm.where(HeroImages.class).findAll();
             initHeroList();
-            //init();
         }
 
         // pass into a fragment
@@ -123,7 +129,10 @@ public class Pedia extends AppCompatActivity implements RecyclerViewClickListene
 
     private void parseNewFile(XmlPullParser parser) throws IOException, XmlPullParserException {
 
+        int counter = 0;
         Hero tempHero = null;
+        // грузануть из бд элемент 0
+        HeroImages tempImages;
         heroList = new ArrayList<>();
 
         int eventType = parser.getEventType();
@@ -137,7 +146,9 @@ public class Pedia extends AppCompatActivity implements RecyclerViewClickListene
                     case XmlPullParser.START_TAG:
                         name = parser.getName();
                         if (name.equals("hero")){
-                            tempHero = new Hero("", "", "", "", "", "", "", "");
+                            // достаем картинки по некст каунтеру из бд
+                            tempImages = listHeroImages.get(counter);
+                            tempHero = new Hero("", "", "", "", "", "", "", "", tempImages);
                         }
                         else if (tempHero != null)
                         {
@@ -173,6 +184,7 @@ public class Pedia extends AppCompatActivity implements RecyclerViewClickListene
                             {
                                 tempHero.history = parser.nextText();
                             }
+                            counter++;
 
                             //tempHero = new Hero(tempName, tempStrength, tempAgility, tempIntelligence, baseDamage
                             //, armor, speed, history);
