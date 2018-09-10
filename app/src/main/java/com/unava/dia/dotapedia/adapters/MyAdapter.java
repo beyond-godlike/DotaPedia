@@ -49,7 +49,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyViewHolder> {
         holder.setItemClickListener(new RecyclerViewClickListener() {
             @Override
             public void onItemClick(int pos) {
-                holder.nameTxt.setText(new Integer(holder.getAdapterPosition()).toString());
+                //holder.nameTxt.setText(new Integer(holder.getAdapterPosition()).toString());
                 int buttonIndex = holder.getAdapterPosition();
                 // передать buttonIndex в Activity
 

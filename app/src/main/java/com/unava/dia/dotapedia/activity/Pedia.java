@@ -43,6 +43,8 @@ public class Pedia extends AppCompatActivity implements RecyclerViewClickListene
             // we need a realm db
         }
         else {
+            // create db if isEmpty()
+            if(realm.isEmpty()) createDb();
             // load list first time
             listHeroImages = realm.where(HeroImages.class).findAll();
             initHeroList();
@@ -82,6 +84,13 @@ public class Pedia extends AppCompatActivity implements RecyclerViewClickListene
     protected void onSaveInstanceState(Bundle ourState) {
         super.onSaveInstanceState(ourState);
         ourState.putParcelableArrayList("HEROES_LIST", heroList);
+    }
+
+    @Override
+    public void onDestroy()
+    {
+        super.onDestroy();
+        realm.close();
     }
 
     @Override
@@ -128,11 +137,7 @@ public class Pedia extends AppCompatActivity implements RecyclerViewClickListene
     }
 
     private void parseNewFile(XmlPullParser parser) throws IOException, XmlPullParserException {
-
-        int counter = 0;
         Hero tempHero = null;
-        // грузануть из бд элемент 0
-        HeroImages tempImages;
         heroList = new ArrayList<>();
 
         int eventType = parser.getEventType();
@@ -147,8 +152,7 @@ public class Pedia extends AppCompatActivity implements RecyclerViewClickListene
                         name = parser.getName();
                         if (name.equals("hero")){
                             // достаем картинки по некст каунтеру из бд
-                            tempImages = listHeroImages.get(counter);
-                            tempHero = new Hero("", "", "", "", "", "", "", "", tempImages);
+                            tempHero = new Hero("", "", "", "", "", "", "", "");
                         }
                         else if (tempHero != null)
                         {
@@ -184,7 +188,6 @@ public class Pedia extends AppCompatActivity implements RecyclerViewClickListene
                             {
                                 tempHero.history = parser.nextText();
                             }
-                            counter++;
 
                             //tempHero = new Hero(tempName, tempStrength, tempAgility, tempIntelligence, baseDamage
                             //, armor, speed, history);
@@ -203,4 +206,39 @@ public class Pedia extends AppCompatActivity implements RecyclerViewClickListene
         }
     }
 
+    private void createDb() {
+        String[] names = getResources().getStringArray(R.array.Abaddon);
+        addImagesToDb(names);
+
+        names = getResources().getStringArray(R.array.Alchemist);
+        addImagesToDb(names);
+
+        names = getResources().getStringArray(R.array.Axe);
+        addImagesToDb(names);
+
+        names = getResources().getStringArray(R.array.Beastmaster);
+        addImagesToDb(names);
+
+        names = getResources().getStringArray(R.array.Bristleback);
+        addImagesToDb(names);
+
+        names = getResources().getStringArray(R.array.Centaur);
+        addImagesToDb(names);
+
+        names = getResources().getStringArray(R.array.Chaos);
+        addImagesToDb(names);
+    }
+
+    private void addImagesToDb(String[] names) {
+        realm.beginTransaction();
+        HeroImages hi = realm.createObject(HeroImages.class);
+
+        hi.setHeroIcon(names[0]);
+        hi.setSkillIcon1(names[1]);
+        hi.setSkillIcon2(names[2]);
+        hi.setSkillIcon3(names[3]);
+        hi.setSkillIcon4(names[4]);
+
+        realm.commitTransaction();
+    }
 }

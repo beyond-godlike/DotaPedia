@@ -20,10 +20,9 @@ public class Hero implements Parcelable, Serializable {
     public String speed = "";
 
     public String history = "";
-    public HeroImages images;
 
     public  Hero(String name, String strength, String agility, String intelligence
-    , String baseDamage, String armor, String speed, String history, HeroImages images) {
+    , String baseDamage, String armor, String speed, String history) {
         this.name = name;
 
         this.strength = strength;
@@ -35,7 +34,6 @@ public class Hero implements Parcelable, Serializable {
         this.speed = speed;
 
         this.history = history;
-        this.images = images;
     }
 
 
@@ -68,7 +66,6 @@ public class Hero implements Parcelable, Serializable {
     public void setHistory(String history) {
         this.history = history;
     }
-    public void setImages(HeroImages images) { this.images = images; }
 
     //_______________________________________________________________________________________//
 
@@ -81,7 +78,6 @@ public class Hero implements Parcelable, Serializable {
         armor = in.readString();
         speed = in.readString();
         history = in.readString();
-        images = (HeroImages) in.readParcelable(HeroImages.class.getClassLoader());
     }
 
     @Override
@@ -99,7 +95,6 @@ public class Hero implements Parcelable, Serializable {
         dest.writeString(armor);
         dest.writeString(speed);
         dest.writeString(history);
-        dest.writeParcelable(images, flags);
     }
 
     @SuppressWarnings("unused")

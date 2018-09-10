@@ -1,52 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="Abaddon">
-        <item>assets/img/abaddon/0.png</item>
-        <item>assets/img/abaddon/1.png</item>
-        <item>assets/img/abaddon/2.png</item>
-        <item>assets/img/abaddon/3.png</item>
-        <item>assets/img/abaddon/4.png</item>
+        <item>img/abaddon/0.png</item>
+        <item>img/abaddon/1.png</item>
+        <item>img/abaddon/2.png</item>
+        <item>img/abaddon/3.png</item>
+        <item>img/abaddon/4.png</item>
     </string-array>
     <string-array name="Alchemist">
-        <item>assets/img/alchemist/0.png</item>
-        <item>assets/img/alchemist/1.png</item>
-        <item>assets/img/alchemist/2.png</item>
-        <item>assets/img/alchemist/3.png</item>
-        <item>assets/img/alchemist/4.png</item>
+        <item>img/alchemist/0.png</item>
+        <item>img/alchemist/1.png</item>
+        <item>img/alchemist/2.png</item>
+        <item>img/alchemist/3.png</item>
+        <item>img/alchemist/4.png</item>
     </string-array>
     <string-array name="Axe">
-        <item>assets/img/axe/0.png</item>
-        <item>assets/img/axe/1.png</item>
-        <item>assets/img/axe/2.png</item>
-        <item>assets/img/axe/3.png</item>
-        <item>assets/img/axe/4.png</item>
+        <item>img/axe/0.png</item>
+        <item>img/axe/1.png</item>
+        <item>img/axe/2.png</item>
+        <item>img/axe/3.png</item>
+        <item>img/axe/4.png</item>
     </string-array>
     <string-array name="Beastmaster">
-        <item>assets/img/beastmaster/0.png</item>
-        <item>assets/img/beastmaster/1.png</item>
-        <item>assets/img/beastmaster/2.png</item>
-        <item>assets/img/beastmaster/3.png</item>
-        <item>assets/img/beastmaster/4.png</item>
+        <item>img/beastmaster/0.png</item>
+        <item>img/beastmaster/1.png</item>
+        <item>img/beastmaster/2.png</item>
+        <item>img/beastmaster/3.png</item>
+        <item>img/beastmaster/4.png</item>
     </string-array>
     <string-array name="Bristleback">
-        <item>assets/img/bristleback/0.png</item>
-        <item>assets/img/bristleback/1.png</item>
-        <item>assets/img/bristleback/2.png</item>
-        <item>assets/img/bristleback/3.png</item>
-        <item>assets/img/bristleback/4.png</item>
+        <item>img/bristleback/0.png</item>
+        <item>img/bristleback/1.png</item>
+        <item>img/bristleback/2.png</item>
+        <item>img/bristleback/3.png</item>
+        <item>img/bristleback/4.png</item>
     </string-array>
     <string-array name="Centaur">
-        <item>assets/img/centaur/0.png</item>
-        <item>assets/img/centaur/1.png</item>
-        <item>assets/img/centaur/2.png</item>
-        <item>assets/img/centaur/3.png</item>
-        <item>assets/img/centaur/4.png</item>
+        <item>img/centaur/0.png</item>
+        <item>img/centaur/1.png</item>
+        <item>img/centaur/2.png</item>
+        <item>img/centaur/3.png</item>
+        <item>img/centaur/4.png</item>
     </string-array>
     <string-array name="Chaos">
-        <item>assets/img/chaos/0.png</item>
-        <item>assets/img/chaos/1.png</item>
-        <item>assets/img/chaos/2.png</item>
-        <item>assets/img/chaos/3.png</item>
-        <item>assets/img/chaos/4.png</item>
+        <item>img/chaos/0.png</item>
+        <item>img/chaos/1.png</item>
+        <item>img/chaos/2.png</item>
+        <item>img/chaos/3.png</item>
+        <item>img/chaos/4.png</item>
     </string-array>
 </resources>
