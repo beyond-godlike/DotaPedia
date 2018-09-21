@@ -12,6 +12,7 @@ import io.realm.RealmObject;
  */
 
 public class HeroImages extends RealmObject {
+    private String name;
     private String heroIcon;
     private String skillIcon1;
     private String skillIcon2;
@@ -58,4 +59,11 @@ public class HeroImages extends RealmObject {
         this.skillIcon4 = skillIcon4;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 }

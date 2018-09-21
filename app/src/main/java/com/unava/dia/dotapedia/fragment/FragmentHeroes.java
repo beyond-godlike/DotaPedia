@@ -29,7 +29,7 @@ public class FragmentHeroes extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_heroes, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_heroes, null);
 
         // он уже тут NULL
         Log.d("sss", new Integer(heroes.size()).toString());

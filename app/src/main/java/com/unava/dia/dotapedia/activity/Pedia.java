@@ -1,6 +1,7 @@
 package com.unava.dia.dotapedia.activity;
 
 import android.app.FragmentManager;
+import android.content.res.AssetManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -12,6 +13,8 @@ import com.unava.dia.dotapedia.fragment.FragmentHeroes;
 import com.unava.dia.dotapedia.fragment.FragmentInformation;
 import com.unava.dia.dotapedia.RecyclerViewClickListener;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -36,6 +39,7 @@ public class Pedia extends AppCompatActivity implements RecyclerViewClickListene
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pedia);
         ButterKnife.bind(this);
+
         realm = Realm.getInstance(getApplicationContext());
 
         if(savedInstanceState != null) {
@@ -44,7 +48,7 @@ public class Pedia extends AppCompatActivity implements RecyclerViewClickListene
         }
         else {
             // create db if isEmpty()
-            if(realm.isEmpty()) createDb();
+            if(realm.isEmpty()) createDbFromJson();
             // load list first time
             listHeroImages = realm.where(HeroImages.class).findAll();
             initHeroList();
@@ -206,39 +210,19 @@ public class Pedia extends AppCompatActivity implements RecyclerViewClickListene
         }
     }
 
-    private void createDb() {
-        String[] names = getResources().getStringArray(R.array.Abaddon);
-        addImagesToDb(names);
 
-        names = getResources().getStringArray(R.array.Alchemist);
-        addImagesToDb(names);
+    public void createDbFromJson() {
+        try {
+            InputStream is = getAssets().open("icons.json");
 
-        names = getResources().getStringArray(R.array.Axe);
-        addImagesToDb(names);
-
-        names = getResources().getStringArray(R.array.Beastmaster);
-        addImagesToDb(names);
-
-        names = getResources().getStringArray(R.array.Bristleback);
-        addImagesToDb(names);
-
-        names = getResources().getStringArray(R.array.Centaur);
-        addImagesToDb(names);
-
-        names = getResources().getStringArray(R.array.Chaos);
-        addImagesToDb(names);
-    }
-
-    private void addImagesToDb(String[] names) {
-        realm.beginTransaction();
-        HeroImages hi = realm.createObject(HeroImages.class);
-
-        hi.setHeroIcon(names[0]);
-        hi.setSkillIcon1(names[1]);
-        hi.setSkillIcon2(names[2]);
-        hi.setSkillIcon3(names[3]);
-        hi.setSkillIcon4(names[4]);
-
-        realm.commitTransaction();
+            realm.beginTransaction();
+            realm.createAllFromJson(HeroImages.class, is);
+            realm.commitTransaction();
+        } catch (IOException e) {
+            if(realm.isInTransaction()) {
+                realm.cancelTransaction();
+            }
+            throw new RuntimeException(e);
+        }
     }
 }

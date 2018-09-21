@@ -28,6 +28,13 @@
         <item>img/beastmaster/3.png</item>
         <item>img/beastmaster/4.png</item>
     </string-array>
+	<string-array name="Brewmaster">
+        <item>img/brewmaster/0.png</item>
+        <item>img/brewmaster/1.png</item>
+        <item>img/brewmaster/2.png</item>
+        <item>img/brewmaster/3.png</item>
+        <item>img/brewmaster/4.png</item>
+    </string-array>
     <string-array name="Bristleback">
         <item>img/bristleback/0.png</item>
         <item>img/bristleback/1.png</item>
@@ -48,5 +55,208 @@
         <item>img/chaos/2.png</item>
         <item>img/chaos/3.png</item>
         <item>img/chaos/4.png</item>
+    </string-array>
+	<string-array name="Clockwerk">
+        <item>img/clockwerk/0.png</item>
+        <item>img/clockwerk/1.png</item>
+        <item>img/clockwerk/2.png</item>
+        <item>img/clockwerk/3.png</item>
+        <item>img/clockwerk/4.png</item>
+    </string-array>
+	<string-array name="Doom">
+        <item>img/doom/0.png</item>
+        <item>img/doom/1.png</item>
+        <item>img/doom/2.png</item>
+        <item>img/doom/3.png</item>
+        <item>img/doom/4.png</item>
+    </string-array>
+	<string-array name="DragonKnight">
+        <item>img/dragonknight/0.png</item>
+        <item>img/dragonknight/1.png</item>
+        <item>img/dragonknight/2.png</item>
+        <item>img/dragonknight/3.png</item>
+        <item>img/dragonknight/4.png</item>
+    </string-array>
+	<string-array name="EarthSpirit">
+        <item>img/earth/0.png</item>
+        <item>img/earth/1.png</item>
+        <item>img/earth/2.png</item>
+        <item>img/earth/3.png</item>
+        <item>img/earth/4.png</item>
+    </string-array>
+	<string-array name="Earthshaker">
+        <item>img/earthshaker/0.png</item>
+        <item>img/earthshaker/1.png</item>
+        <item>img/earthshaker/2.png</item>
+        <item>img/earthshaker/3.png</item>
+        <item>img/earthshaker/4.png</item>
+    </string-array>
+	<string-array name="ElderTitan">
+        <item>img/eldertitan/0.png</item>
+        <item>img/eldertitan/1.png</item>
+        <item>img/eldertitan/2.png</item>
+        <item>img/eldertitan/3.png</item>
+        <item>img/eldertitan/4.png</item>
+    </string-array>
+	<string-array name="Huskar">
+        <item>img/huskar/0.png</item>
+        <item>img/huskar/1.png</item>
+        <item>img/huskar/2.png</item>
+        <item>img/huskar/3.png</item>
+        <item>img/huskar/4.png</item>
+    </string-array>
+	<string-array name="Io">
+        <item>img/io/0.png</item>
+        <item>img/io/1.png</item>
+        <item>img/io/2.png</item>
+        <item>img/io/3.png</item>
+        <item>img/io/4.png</item>
+    </string-array>
+	<string-array name="Kunkka">
+        <item>img/kunkka/0.png</item>
+        <item>img/kunkka/1.png</item>
+        <item>img/kunkka/2.png</item>
+        <item>img/kunkka/3.png</item>
+        <item>img/kunkka/4.png</item>
+    </string-array>
+	<string-array name="LegionCommander">
+        <item>img/lc/0.png</item>
+        <item>img/lc/1.png</item>
+        <item>img/lc/2.png</item>
+        <item>img/lc/3.png</item>
+        <item>img/lc/4.png</item>
+    </string-array>
+	<string-array name="Lifestealer">
+        <item>img/lifestealer/0.png</item>
+        <item>img/lifestealer/1.png</item>
+        <item>img/lifestealer/2.png</item>
+        <item>img/lifestealer/3.png</item>
+        <item>img/lifestealer/4.png</item>
+    </string-array>
+	<string-array name="Lycan">
+        <item>img/lycan/0.png</item>
+        <item>img/lycan/1.png</item>
+        <item>img/lycan/2.png</item>
+        <item>img/lycan/3.png</item>
+        <item>img/lycan/4.png</item>
+    </string-array>
+	<string-array name="Magnus">
+        <item>img/magnus/0.png</item>
+        <item>img/magnus/1.png</item>
+        <item>img/magnus/2.png</item>
+        <item>img/magnus/3.png</item>
+        <item>img/magnus/4.png</item>
+    </string-array>
+	<string-array name="NightStalker">
+        <item>img/nightstalker/0.png</item>
+        <item>img/nightstalker/1.png</item>
+        <item>img/nightstalker/2.png</item>
+        <item>img/nightstalker/3.png</item>
+        <item>img/nightstalker/4.png</item>
+    </string-array>
+	<string-array name="Omniknight">
+        <item>img/omniknight/0.png</item>
+        <item>img/omniknight/1.png</item>
+        <item>img/omniknight/2.png</item>
+        <item>img/omniknight/3.png</item>
+        <item>img/omniknight/4.png</item>
+    </string-array>
+	<string-array name="Phoenix">
+        <item>img/phoenix/0.png</item>
+        <item>img/phoenix/1.png</item>
+        <item>img/phoenix/2.png</item>
+        <item>img/phoenix/3.png</item>
+        <item>img/phoenix/4.png</item>
+    </string-array>
+	<string-array name="Pudge">
+        <item>img/pudge/0.png</item>
+        <item>img/pudge/1.png</item>
+        <item>img/pudge/2.png</item>
+        <item>img/pudge/3.png</item>
+        <item>img/pudge/4.png</item>
+    </string-array>
+	<string-array name="SandKing">
+        <item>img/sandking/0.png</item>
+        <item>img/sandking/1.png</item>
+        <item>img/sandking/2.png</item>
+        <item>img/sandking/3.png</item>
+        <item>img/sandking/4.png</item>
+    </string-array>
+	<string-array name="Slardar">
+        <item>img/slardar/0.png</item>
+        <item>img/slardar/1.png</item>
+        <item>img/slardar/2.png</item>
+        <item>img/slardar/3.png</item>
+        <item>img/slardar/4.png</item>
+    </string-array>
+	<string-array name="SpiritBreaker">
+        <item>img/spiritbreaker/0.png</item>
+        <item>img/spiritbreaker/1.png</item>
+        <item>img/spiritbreaker/2.png</item>
+        <item>img/spiritbreaker/3.png</item>
+        <item>img/spiritbreaker/4.png</item>
+    </string-array>
+	<string-array name="Sven">
+        <item>img/sven/0.png</item>
+        <item>img/sven/1.png</item>
+        <item>img/sven/2.png</item>
+        <item>img/sven/3.png</item>
+        <item>img/sven/4.png</item>
+    </string-array>
+	<string-array name="Tidehunter">
+        <item>img/tidehunter/0.png</item>
+        <item>img/tidehunter/1.png</item>
+        <item>img/tidehunter/2.png</item>
+        <item>img/tidehunter/3.png</item>
+        <item>img/tidehunter/4.png</item>
+    </string-array>
+	<string-array name="Timbersaw">
+        <item>img/timbersaw/0.png</item>
+        <item>img/timbersaw/1.png</item>
+        <item>img/timbersaw/2.png</item>
+        <item>img/timbersaw/3.png</item>
+        <item>img/timbersaw/4.png</item>
+    </string-array>
+	<string-array name="Tiny">
+        <item>img/tiny/0.png</item>
+        <item>img/tiny/1.png</item>
+        <item>img/tiny/2.png</item>
+        <item>img/tiny/3.png</item>
+        <item>img/tiny/4.png</item>
+    </string-array>
+	<string-array name="TreantProtector">
+        <item>img/treant/0.png</item>
+        <item>img/treant/1.png</item>
+        <item>img/treant/2.png</item>
+        <item>img/treant/3.png</item>
+        <item>img/treant/4.png</item>
+    </string-array>
+	<string-array name="Tusk">
+        <item>img/tusk/0.png</item>
+        <item>img/tusk/1.png</item>
+        <item>img/tusk/2.png</item>
+        <item>img/tusk/3.png</item>
+        <item>img/tusk/4.png</item>
+    </string-array>
+	<string-array name="Underlord">
+        <item>img/underlord/0.png</item>
+        <item>img/underlord/1.png</item>
+        <item>img/underlord/2.png</item>
+        <item>img/underlord/3.png</item>
+        <item>img/underlord/4.png</item>
+    </string-array>
+	<string-array name="Undying">
+        <item>img/undying/0.png</item>
+        <item>img/undying/1.png</item>
+        <item>img/undying/2.png</item>
+        <item>img/undying/3.png</item>
+        <item>img/undying/4.png</item>
+    </string-array>
+	<string-array name="WraithKing">
+        <item>img/wraith/0.png</item>
+        <item>img/wraith/1.png</item>
+        <item>img/wraith/2.png</item>
+        <item>img/wraith/3.png</item>
+        <item>img/wraith/4.png</item>
     </string-array>
 </resources>

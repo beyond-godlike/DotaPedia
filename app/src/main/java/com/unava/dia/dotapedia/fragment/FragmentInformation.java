@@ -7,10 +7,12 @@ import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.app.Fragment;
+import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -35,6 +37,8 @@ public class FragmentInformation extends Fragment {
     private Realm realm;
     private RealmResults<HeroImages> listHeroImages;
 
+    @BindView(R.id.hero_name) TextView hName;
+
     @BindView(R.id.hero_strength) TextView strength;
     @BindView(R.id.hero_agility) TextView agility;
     @BindView(R.id.hero_intelligence) TextView intelligence;
@@ -46,6 +50,10 @@ public class FragmentInformation extends Fragment {
     @BindView(R.id.hero_history) TextView history;
 
     @BindView(R.id.heroImage) ImageView heroImage;
+    @BindView(R.id.skill1) ImageButton skillImage1;
+    @BindView(R.id.skill2) ImageButton skillImage2;
+    @BindView(R.id.skill3) ImageButton skillImage3;
+    @BindView(R.id.skill4) ImageButton skillImage4;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -64,7 +72,9 @@ public class FragmentInformation extends Fragment {
         rootView = inflater.inflate(R.layout.fragment_information, container, false);
         ButterKnife.bind(this, rootView);
 
-        setDefaultHero();
+        history.setMovementMethod(new ScrollingMovementMethod());
+
+        setHero(0);
 
         return rootView;
     }
@@ -73,24 +83,39 @@ public class FragmentInformation extends Fragment {
         heroImage.setImageBitmap(BitmapFactory.decodeResource(this.getResources(), R.drawable.axe));
     }
 
-    public void setHero(int i) {
+    public InputStream openImage(String path) {
         AssetManager am = getActivity().getApplicationContext().getResources().getAssets();
         InputStream  stream = null;
-        String path = listHeroImages.get(i).getHeroIcon();
+
         try {
             stream = am.open(path);
         } catch (IOException e) {
             e.printStackTrace();
         }
-        heroImage.setImageDrawable(Drawable.createFromStream(stream, null));
+        return stream;
+    }
+    public void setHero(int i) {
+        //AssetManager am = getActivity().getApplicationContext().getResources().getAssets();
+        //InputStream  stream = null;
 
+        String path = listHeroImages.get(i).getHeroIcon();
+        String pathSkill1 = listHeroImages.get(i).getSkillIcon1();
+        String pathSkill2 = listHeroImages.get(i).getSkillIcon2();
+        String pathSkill3 = listHeroImages.get(i).getSkillIcon3();
+        String pathSkill4 = listHeroImages.get(i).getSkillIcon4();
 
-        Log.d("imii", path);
+        heroImage.setImageDrawable(Drawable.createFromStream(openImage(path), null));
+        skillImage1.setImageDrawable(Drawable.createFromStream(openImage(pathSkill1), null));
+        skillImage2.setImageDrawable(Drawable.createFromStream(openImage(pathSkill2), null));
+        skillImage3.setImageDrawable(Drawable.createFromStream(openImage(pathSkill3), null));
+        skillImage4.setImageDrawable(Drawable.createFromStream(openImage(pathSkill4), null));
+
         Log.d("imii", new Integer(listHeroImages.size()).toString()); // 21
 
+        hName.setText(heroes.get(i).name);
         strength.setText(heroes.get(i).strength);
-        agility.setText(heroes.get(i).strength);
-        intelligence.setText(heroes.get(i).name);
+        agility.setText(heroes.get(i).agility);
+        intelligence.setText(heroes.get(i).intelligence);
 
         damage.setText(heroes.get(i).baseDamage);
         speed.setText(heroes.get(i).speed);
@@ -99,17 +124,6 @@ public class FragmentInformation extends Fragment {
         history.setText(heroes.get(i).history);
     }
 
-    public void setDefaultHero() {
-        strength.setText(heroes.get(1).strength);
-        agility.setText(heroes.get(1).agility);
-        intelligence.setText(heroes.get(1).intelligence);
-
-        damage.setText(heroes.get(1).baseDamage);
-        speed.setText(heroes.get(1).speed);
-        armor.setText(heroes.get(1).armor);
-
-        history.setText(heroes.get(1).history);
-    }
 
     private void readRealmDb() {
         listHeroImages = realm.where(HeroImages.class).findAll();
