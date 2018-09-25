@@ -79,9 +79,6 @@ public class FragmentInformation extends Fragment {
         return rootView;
     }
 
-    public void initView() {
-        heroImage.setImageBitmap(BitmapFactory.decodeResource(this.getResources(), R.drawable.axe));
-    }
 
     public InputStream openImage(String path) {
         AssetManager am = getActivity().getApplicationContext().getResources().getAssets();
@@ -117,9 +114,9 @@ public class FragmentInformation extends Fragment {
         agility.setText(heroes.get(i).agility);
         intelligence.setText(heroes.get(i).intelligence);
 
-        damage.setText(heroes.get(i).baseDamage);
-        speed.setText(heroes.get(i).speed);
-        armor.setText(heroes.get(i).armor);
+        damage.setText("base damage: " + heroes.get(i).baseDamage);
+        speed.setText("speed: " + heroes.get(i).speed);
+        armor.setText("base armor: " + heroes.get(i).armor);
 
         history.setText(heroes.get(i).history);
     }

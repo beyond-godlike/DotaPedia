@@ -16,7 +16,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".activity.Pedia" />
-        <activity android:name=".activity.CardViewActivity"></activity>
+        <activity android:name=".activity.CardViewActivity" />
+        <activity android:name=".activity.Articles" />
+        <activity android:name=".activity.Article"></activity>
     </application>
 
 </manifest>

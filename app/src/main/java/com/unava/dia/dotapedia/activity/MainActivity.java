@@ -26,4 +26,9 @@ public class MainActivity extends AppCompatActivity {
 
         // create a realm db?
     }
+
+    public void onButtonArticlesClicked(View view) {
+        Intent intent = new Intent(MainActivity.this, Articles.class);
+        startActivity(intent);
+    }
 }

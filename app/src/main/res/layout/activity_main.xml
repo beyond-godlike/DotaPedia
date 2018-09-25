@@ -20,4 +20,14 @@
         android:layout_marginStart="49dp"
         android:layout_marginTop="19dp"
         android:id="@+id/buttonPedia" />
+
+    <Button
+        android:text="Articles"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/buttonPedia"
+        android:onClick="onButtonArticlesClicked"
+        android:layout_toEndOf="@+id/buttonPedia"
+        android:layout_marginStart="63dp"
+        android:id="@+id/button" />
 </RelativeLayout>
