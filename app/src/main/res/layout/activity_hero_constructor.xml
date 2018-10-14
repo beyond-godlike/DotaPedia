@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/heroConstructor"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context="com.unava.dia.dotapedia.activity.HeroConstructor">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="100">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="70">
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:srcCompat="@drawable/axe"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    android:id="@+id/imageButtonHero" />
+
+                <TextView
+                    android:text="TextView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textViewLVL"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/imageButtonHero"
+                    app:layout_constraintRight_toRightOf="@+id/imageButtonHero"
+                    android:layout_marginTop="8dp"
+                    android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium"
+                    android:textAlignment="center" />
+
+                <TextView
+                    android:id="@+id/textViewHP"
+                    android:text="TextView"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center"
+                    android:padding="8dp"
+                    android:background="@color/colorAccent"
+                    android:elevation="0dp"
+                    android:layout_width="279dp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textViewLVL"
+                    android:layout_marginTop="2dp" />
+
+                <TextView
+                    android:id="@+id/textViewMP"
+                    android:text="TextView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center"
+                    android:padding="8dp"
+                    android:background="@color/colorPrimary"
+                    android:elevation="0dp"
+                    app:layout_constraintRight_toRightOf="@+id/textViewHP"
+                    app:layout_constraintLeft_toLeftOf="@+id/textViewHP"
+                    app:layout_constraintTop_toBottomOf="@+id/textViewHP"
+                    android:layout_marginTop="2dp" />
+
+                <GridLayout
+                    android:rowCount="4"
+                    android:columnCount="4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintLeft_toRightOf="@+id/imageButtonHero">
+
+                    <ImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_row="1"
+                        android:layout_column="1"
+                        app:srcCompat="@drawable/strength"
+                        android:id="@+id/imageStrength" />
+
+                    <ImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_column="1"
+                        android:layout_row="2"
+                        app:srcCompat="@drawable/agility"
+                        android:id="@+id/imageAgility" />
+
+                    <ImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_column="1"
+                        android:layout_row="3"
+                        app:srcCompat="@drawable/intelligence"
+                        android:id="@+id/imageIntelligence" />
+
+                    <TextView
+                        android:text="TextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_column="2"
+                        android:layout_row="1"
+                        android:id="@+id/textViewStrength" />
+
+                    <TextView
+                        android:text="TextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_column="2"
+                        android:layout_row="2"
+                        android:id="@+id/textViewAgility" />
+
+                    <TextView
+                        android:text="TextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_column="2"
+                        android:layout_row="3"
+                        android:id="@+id/textViewIntelligence" />
+
+                </GridLayout>
+
+
+            </android.support.constraint.ConstraintLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="30">
+            <ListView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+            </ListView>
+        </LinearLayout>
+    </LinearLayout>
+
+</ScrollView>

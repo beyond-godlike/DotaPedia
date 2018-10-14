@@ -1,20 +1,16 @@
 package com.unava.dia.dotapedia.activity;
 
 import android.app.FragmentManager;
-import android.content.res.AssetManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 
 import com.unava.dia.dotapedia.R;
-import com.unava.dia.dotapedia.data.Hero;
-import com.unava.dia.dotapedia.data.HeroImages;
+import com.unava.dia.dotapedia.data.model.Hero;
 import com.unava.dia.dotapedia.fragment.FragmentHeroes;
 import com.unava.dia.dotapedia.fragment.FragmentInformation;
 import com.unava.dia.dotapedia.RecyclerViewClickListener;
 
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -25,11 +21,10 @@ import org.xmlpull.v1.XmlPullParserFactory;
 
 import butterknife.ButterKnife;
 import io.realm.Realm;
-import io.realm.RealmResults;
 
 public class Pedia extends AppCompatActivity implements RecyclerViewClickListener {
     private ArrayList<Hero> heroList;
-    private RealmResults<HeroImages> listHeroImages;
+    //private RealmResults<DotaHero> listHeroImages;
 
     private Realm realm;
 
@@ -47,10 +42,8 @@ public class Pedia extends AppCompatActivity implements RecyclerViewClickListene
             // we need a realm db
         }
         else {
-            // create db if isEmpty()
-            if(realm.isEmpty()) createDbFromJson();
             // load list first time
-            listHeroImages = realm.where(HeroImages.class).findAll();
+            //listHeroImages = realm.where(DotaHero.class).findAll();
             initHeroList();
         }
 
@@ -207,22 +200,6 @@ public class Pedia extends AppCompatActivity implements RecyclerViewClickListene
                 }
                 eventType = parser.next();
             }
-        }
-    }
-
-
-    public void createDbFromJson() {
-        try {
-            InputStream is = getAssets().open("icons.json");
-
-            realm.beginTransaction();
-            realm.createAllFromJson(HeroImages.class, is);
-            realm.commitTransaction();
-        } catch (IOException e) {
-            if(realm.isInTransaction()) {
-                realm.cancelTransaction();
-            }
-            throw new RuntimeException(e);
         }
     }
 }

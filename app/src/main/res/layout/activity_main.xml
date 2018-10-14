@@ -29,5 +29,15 @@
         android:onClick="onButtonArticlesClicked"
         android:layout_toEndOf="@+id/buttonPedia"
         android:layout_marginStart="63dp"
-        android:id="@+id/button" />
+        android:id="@+id/buttonArticles" />
+
+    <Button
+        android:text="Hero constructor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="onButtonHeroConstructorClicked"
+        android:layout_alignTop="@+id/buttonArticles"
+        android:layout_toEndOf="@+id/buttonArticles"
+        android:layout_marginStart="62dp"
+        android:id="@+id/buttonHeroConstructor" />
 </RelativeLayout>

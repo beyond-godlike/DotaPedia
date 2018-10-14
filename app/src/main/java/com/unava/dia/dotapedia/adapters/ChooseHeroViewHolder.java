@@ -8,17 +8,17 @@ import com.unava.dia.dotapedia.R;
 import com.unava.dia.dotapedia.RecyclerViewClickListener;
 
 /**
- * Created by Dia on 29.08.2018.
+ * Created by Dia on 14.10.2018.
  */
 
-public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-    TextView nameTxt;
+public class ChooseHeroViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
     RecyclerViewClickListener itemClickListener;
+    TextView heroName;
 
-    public MyViewHolder(View itemView) {
+    public ChooseHeroViewHolder(View itemView) {
         super(itemView);
 
-        nameTxt = (TextView) itemView.findViewById(R.id.hero_name);
+        heroName = (TextView) itemView.findViewById(R.id.hero_name);
 
         itemView.setOnClickListener(this);
     }

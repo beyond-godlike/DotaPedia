@@ -2,8 +2,6 @@ package com.unava.dia.dotapedia.fragment;
 
 
 import android.content.res.AssetManager;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.app.Fragment;
@@ -17,8 +15,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.unava.dia.dotapedia.R;
-import com.unava.dia.dotapedia.data.Hero;
-import com.unava.dia.dotapedia.data.HeroImages;
+import com.unava.dia.dotapedia.data.DbHelper;
+import com.unava.dia.dotapedia.data.model.DotaHero;
+import com.unava.dia.dotapedia.data.model.Hero;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -35,7 +34,8 @@ public class FragmentInformation extends Fragment {
     ArrayList<Hero> heroes = new ArrayList<>();
 
     private Realm realm;
-    private RealmResults<HeroImages> listHeroImages;
+    private DbHelper dbHelper;
+    private RealmResults<DotaHero> listHeroImages;
 
     @BindView(R.id.hero_name) TextView hName;
 
@@ -59,10 +59,11 @@ public class FragmentInformation extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         realm = Realm.getInstance(getActivity().getApplicationContext());
+        dbHelper = new DbHelper(getActivity().getApplicationContext(), realm);
 
         // достаем список из bundle
         heroes = getArguments().getParcelableArrayList("HEROES_LIST");
-        readRealmDb();
+        listHeroImages = dbHelper.getRealmList();
     }
 
     @Override
@@ -92,14 +93,12 @@ public class FragmentInformation extends Fragment {
         return stream;
     }
     public void setHero(int i) {
-        //AssetManager am = getActivity().getApplicationContext().getResources().getAssets();
-        //InputStream  stream = null;
 
-        String path = listHeroImages.get(i).getHeroIcon();
-        String pathSkill1 = listHeroImages.get(i).getSkillIcon1();
-        String pathSkill2 = listHeroImages.get(i).getSkillIcon2();
-        String pathSkill3 = listHeroImages.get(i).getSkillIcon3();
-        String pathSkill4 = listHeroImages.get(i).getSkillIcon4();
+        String path = listHeroImages.get(i).getIcon();
+        String pathSkill1 = listHeroImages.get(i).getSkill1();
+        String pathSkill2 = listHeroImages.get(i).getSkill2();
+        String pathSkill3 = listHeroImages.get(i).getSkill3();
+        String pathSkill4 = listHeroImages.get(i).getUlt1();
 
         heroImage.setImageDrawable(Drawable.createFromStream(openImage(path), null));
         skillImage1.setImageDrawable(Drawable.createFromStream(openImage(pathSkill1), null));
@@ -120,10 +119,4 @@ public class FragmentInformation extends Fragment {
 
         history.setText(heroes.get(i).history);
     }
-
-
-    private void readRealmDb() {
-        listHeroImages = realm.where(HeroImages.class).findAll();
-    }
-
 }

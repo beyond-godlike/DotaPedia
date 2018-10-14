@@ -7,8 +7,6 @@ import android.support.v7.widget.RecyclerView;
 
 import com.unava.dia.dotapedia.R;
 import com.unava.dia.dotapedia.adapters.ArticlesAdapter;
-import com.unava.dia.dotapedia.adapters.MyAdapter;
-import com.unava.dia.dotapedia.data.Hero;
 
 import java.util.ArrayList;
 

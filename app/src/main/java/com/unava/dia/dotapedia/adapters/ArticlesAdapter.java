@@ -41,6 +41,7 @@ public class ArticlesAdapter extends RecyclerView.Adapter<ArticlesViewHolder> {
         return new ArticlesViewHolder(v);
     }
 
+
     @Override
     public void onBindViewHolder(final ArticlesViewHolder holder, int position) {
         holder.articleName.setText(articlesList.get(position).toString());
@@ -62,7 +63,6 @@ public class ArticlesAdapter extends RecyclerView.Adapter<ArticlesViewHolder> {
         });
 
     }
-
     @Override
     public int getItemCount() {
         return articlesList.size();

@@ -10,8 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.unava.dia.dotapedia.R;
-import com.unava.dia.dotapedia.adapters.MyAdapter;
-import com.unava.dia.dotapedia.data.Hero;
+import com.unava.dia.dotapedia.adapters.InformationAdapter;
+import com.unava.dia.dotapedia.data.model.Hero;
 
 import java.util.ArrayList;
 
@@ -39,7 +39,7 @@ public class FragmentHeroes extends Fragment {
         rv.setLayoutManager(new LinearLayoutManager(rootView.getContext()));
 
         //ADAPTER
-        MyAdapter adapter = new MyAdapter(rootView.getContext(), heroes, getActivity());
+        InformationAdapter adapter = new InformationAdapter(rootView.getContext(), heroes, getActivity());
         rv.setAdapter(adapter);
 
         return rootView;

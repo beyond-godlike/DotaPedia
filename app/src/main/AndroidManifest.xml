@@ -18,7 +18,9 @@
         <activity android:name=".activity.Pedia" />
         <activity android:name=".activity.CardViewActivity" />
         <activity android:name=".activity.Articles" />
-        <activity android:name=".activity.Article"></activity>
+        <activity android:name=".activity.Article" />
+        <activity android:name=".activity.HeroConstructor" />
+        <activity android:name=".activity.ChooseHeroActivity"></activity>
     </application>
 
 </manifest>
