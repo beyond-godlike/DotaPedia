@@ -4,6 +4,7 @@ import android.content.res.AssetManager;
 import android.graphics.drawable.Drawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -24,6 +25,7 @@ public class HeroConstructor extends AppCompatActivity {
     private Realm realm;
     private DbHelper dbHelper;
     int heroId = 0;
+    int level = 1;
 
     @BindView(R.id.textViewLVL) TextView textViewLVL;
     @BindView(R.id.textViewHP) TextView textViewHP;
@@ -33,6 +35,16 @@ public class HeroConstructor extends AppCompatActivity {
     @BindView(R.id.textViewStrength) TextView textViewStrength;
     @BindView(R.id.textViewAgility) TextView textViewAgility;
     @BindView(R.id.textViewIntelligence) TextView textViewIntelligence;
+
+    @BindView(R.id.textViewAttack) TextView textViewAttack;
+    @BindView(R.id.textViewArmor) TextView textViewArmor;
+    @BindView(R.id.textViewSpeed) TextView textViewSpeed;
+
+    @BindView(R.id.skill_one) ImageButton skill_one;
+    @BindView(R.id.skill_two) ImageButton skill_two;
+    @BindView(R.id.skill_three) ImageButton skill_three;
+    @BindView(R.id.skill_four) ImageButton skill_four;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +66,7 @@ public class HeroConstructor extends AppCompatActivity {
             heroesList = dbHelper.getRealmList();
         }
 
-        updateActivity(heroId, 1);
+        updateActivity(heroId, level);
 
     }
 
@@ -72,12 +84,31 @@ public class HeroConstructor extends AppCompatActivity {
         //TODO заполнить весь UI
         imageButtonHero.setImageDrawable(Drawable.createFromStream(openImage(tempHero.getIcon()), null));
         textViewLVL.setText(new Integer(tempHero.currentLvl).toString());
-        textViewHP.setText(new Double(tempHero.currentHp).toString());
-        textViewMP.setText(new Double(tempHero.currentMp).toString());
+        textViewHP.setText(String.format("%.5g%n", tempHero.currentHp));
+        textViewMP.setText(String.format("%.5g%n", tempHero.currentMp));
 
-        textViewStrength.setText(new Double(tempHero.currentStrength).toString());
-        textViewAgility.setText(new Double(tempHero.currentAgility).toString());
-        textViewIntelligence.setText(new Double(tempHero.currentIntelligence).toString());
+        textViewStrength.setText(String.format("%.2g%n", tempHero.currentStrength));
+        textViewAgility.setText(String.format("%.2g%n", tempHero.currentAgility));
+        textViewIntelligence.setText(String.format("%.2g%n", tempHero.currentIntelligence));
+
+        //ATTACK
+        textViewAttack.setText(String.format("%.3g%n", tempHero.currentDmg1) + " + "
+        + String.format("%.2g%n", tempHero.currentDmg2));
+
+        // TODO recount
+        // Armor
+        textViewArmor.setText(String.format("%.2g%n", tempHero.currentArmor));
+
+        //Speed
+        textViewSpeed.setText(new Integer(tempHero.getSpeed()).toString());
+
+        // Skills
+        skill_one.setImageDrawable(Drawable.createFromStream(openImage(tempHero.getSkill1()), null));
+        skill_two.setImageDrawable(Drawable.createFromStream(openImage(tempHero.getSkill2()), null));
+        skill_three.setImageDrawable(Drawable.createFromStream(openImage(tempHero.getSkill3()), null));
+        skill_four.setImageDrawable(Drawable.createFromStream(openImage(tempHero.getUlt1()), null));
+
+
     }
 
     public DotaHero changeStats(DotaHero tempHero) {
@@ -87,9 +118,13 @@ public class HeroConstructor extends AppCompatActivity {
         tempHero.currentIntelligence = tempHero.getIntelligence() + tempHero.currentLvl * tempHero.getAddInt();
 
         // пересчитываем скорость и броню
+        tempHero.currentDmg1 = (tempHero.currentLvl * tempHero.getAddSt()) + tempHero.getBaseDamage1();
+        tempHero.currentDmg2 = (tempHero.currentLvl * tempHero.getAddSt()) + tempHero.getBaseDamage2();
+
+        tempHero.currentArmor = tempHero.getPhysarmor() + (tempHero.getAddAg() * (1 / 6.25));
 
 
-        // высчитываем хп
+                // высчитываем хп
         tempHero.currentStrength = tempHero.getStrength()
                 + tempHero.currentLvl * tempHero.getAddSt();
         tempHero.currentHp = tempHero.getBaseHP() + (tempHero.currentStrength * 22.5);
@@ -123,4 +158,25 @@ public class HeroConstructor extends AppCompatActivity {
         realm.close();
     }
 
+    public void onPlusLvlClicked(View view) {
+        if (level >= 25) {level = 25;}
+        else {level++;}
+        updateActivity(heroId, level);
+    }
+
+    public void onMinusLvlClicked(View view) {
+        if (level <= 1) {level = 1;}
+        else {level--;}
+        updateActivity(heroId, level);
+    }
+
+    public void onMaxLvlClicked(View view) {
+        level = 25;
+        updateActivity(heroId, level);
+    }
+
+    public void onMinLvlClicked(View view) {
+        level = 1;
+        updateActivity(heroId, level);
+    }
 }

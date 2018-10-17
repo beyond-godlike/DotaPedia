@@ -36,7 +36,8 @@
 			android:layout_marginStart="16dp"
 			app:layout_constraintLeft_toLeftOf="parent"
 			android:layout_marginTop="16dp"
-			app:layout_constraintTop_toBottomOf="@+id/hero_name"/>
+			app:layout_constraintTop_toBottomOf="@+id/hero_name"
+			android:scaleType="fitXY" />
 
 		<TextView
 			android:text="TextView"
@@ -181,14 +182,15 @@
 			app:layout_constraintLeft_toLeftOf="parent">
 
 			<ImageButton
-				android:layout_width="88dp"
 				android:layout_height="80dp"
 				app:srcCompat="@drawable/skill_one"
 				android:id="@+id/skill1"
 				tools:layout_editor_absoluteY="293dp"
 				tools:layout_editor_absoluteX="26dp"
 				android:padding="8dp"
-				android:layout_margin="5dp" />
+				android:layout_margin="5dp"
+				android:scaleType="fitXY"
+				android:layout_width="80dp" />
 
 			<ImageButton
 				android:layout_width="80dp"
@@ -199,7 +201,8 @@
 				tools:layout_editor_absoluteX="137dp"
 				android:padding="8dp"
 				android:layout_margin="5dp"
-				android:layout_weight="0.09" />
+				android:layout_weight="0.09"
+				android:scaleType="fitXY" />
 
 			<ImageButton
 				android:layout_width="80dp"
@@ -209,7 +212,9 @@
 				tools:layout_editor_absoluteY="296dp"
 				tools:layout_editor_absoluteX="382dp"
 				android:padding="8dp"
-				android:layout_margin="5dp" />
+				android:layout_margin="5dp"
+				android:scaleType="fitXY"
+				android:adjustViewBounds="false" />
 
 			<ImageButton
 				app:srcCompat="@drawable/skill_four"
@@ -219,7 +224,8 @@
 				tools:layout_editor_absoluteY="293dp"
 				tools:layout_editor_absoluteX="261dp"
 				android:padding="8dp"
-				android:layout_margin="5dp" />
+				android:layout_margin="5dp"
+				android:scaleType="fitXY" />
 
 		</LinearLayout>
 
