@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.unava.dia.dotapedia.R;
 import com.unava.dia.dotapedia.data.DbHelper;
 import com.unava.dia.dotapedia.data.model.DotaHero;
+import com.unava.dia.dotapedia.utils.Utils;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -22,8 +23,6 @@ import io.realm.RealmResults;
 
 public class HeroConstructor extends AppCompatActivity {
     private RealmResults<DotaHero> heroesList;
-    private Realm realm;
-    private DbHelper dbHelper;
     int heroId = 0;
     int level = 1;
 
@@ -52,18 +51,13 @@ public class HeroConstructor extends AppCompatActivity {
         setContentView(R.layout.activity_hero_constructor);
         ButterKnife.bind(this);
 
-        // переносим в async task
-        realm = Realm.getInstance(getApplicationContext());
-        dbHelper = new DbHelper(this, realm);
-
         heroId = this.getIntent().getFlags();
 
         if(savedInstanceState != null) {
-            // we need a realm db
-            heroesList = dbHelper.getRealmList();
+            heroesList = Utils.getHeroPediaList();
         }
         else {
-            heroesList = dbHelper.getRealmList();
+            heroesList = Utils.getHeroPediaList();
         }
 
         updateActivity(heroId, level);
@@ -155,7 +149,6 @@ public class HeroConstructor extends AppCompatActivity {
     public void onDestroy()
     {
         super.onDestroy();
-        realm.close();
     }
 
     public void onPlusLvlClicked(View view) {

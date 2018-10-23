@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -19,7 +20,9 @@
         android:layout_alignParentStart="true"
         android:layout_marginStart="49dp"
         android:layout_marginTop="19dp"
-        android:id="@+id/buttonPedia" />
+        android:id="@+id/buttonPedia"
+        android:background="@drawable/btn_new"
+        tools:ignore="HardcodedText" />
 
     <Button
         android:text="Articles"
@@ -29,7 +32,8 @@
         android:onClick="onButtonArticlesClicked"
         android:layout_toEndOf="@+id/buttonPedia"
         android:layout_marginStart="63dp"
-        android:id="@+id/buttonArticles" />
+        android:id="@+id/buttonArticles"
+        android:background="@drawable/btn_new" />
 
     <Button
         android:text="Hero constructor"
@@ -39,5 +43,22 @@
         android:layout_alignTop="@+id/buttonArticles"
         android:layout_toEndOf="@+id/buttonArticles"
         android:layout_marginStart="62dp"
-        android:id="@+id/buttonHeroConstructor" />
+        android:id="@+id/buttonHeroConstructor"
+        android:background="@drawable/btn_new" />
+
+    <com.melnykov.fab.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="16dp"
+        android:src="@drawable/plus"
+        android:background="@drawable/round_shape"
+        app:fab_colorNormal="@color/secondaryColor"
+        app:fab_colorPressed="@color/secondaryDarkColor"
+        app:fab_colorRipple="@color/secondaryLightColor"
+        android:cropToPadding="false"
+        android:adjustViewBounds="false"
+        android:scaleType="fitXY" />
 </RelativeLayout>

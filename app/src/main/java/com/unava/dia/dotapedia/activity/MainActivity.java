@@ -1,5 +1,6 @@
 package com.unava.dia.dotapedia.activity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -20,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
     //@BindView(R.id.buttonPedia) Button pediaButton;
     private Realm realm;
     private DbHelper dbHelper;
+    public static Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
+        context = getApplicationContext();
         realm = Realm.getInstance(getApplicationContext());
 
         if(savedInstanceState != null) {

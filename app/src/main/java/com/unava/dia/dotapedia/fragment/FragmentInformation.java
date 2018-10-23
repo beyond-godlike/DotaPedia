@@ -15,9 +15,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.unava.dia.dotapedia.R;
-import com.unava.dia.dotapedia.data.DbHelper;
 import com.unava.dia.dotapedia.data.model.DotaHero;
 import com.unava.dia.dotapedia.data.model.Hero;
+import com.unava.dia.dotapedia.utils.Utils;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -25,7 +25,6 @@ import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import io.realm.Realm;
 import io.realm.RealmResults;
 
 public class FragmentInformation extends Fragment {
@@ -33,8 +32,6 @@ public class FragmentInformation extends Fragment {
     View rootView;
     ArrayList<Hero> heroes = new ArrayList<>();
 
-    private Realm realm;
-    private DbHelper dbHelper;
     private RealmResults<DotaHero> listHeroImages;
 
     @BindView(R.id.hero_name) TextView hName;
@@ -58,12 +55,10 @@ public class FragmentInformation extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        realm = Realm.getInstance(getActivity().getApplicationContext());
-        dbHelper = new DbHelper(getActivity().getApplicationContext(), realm);
 
         // достаем список из bundle
         heroes = getArguments().getParcelableArrayList("HEROES_LIST");
-        listHeroImages = dbHelper.getRealmList();
+        listHeroImages = Utils.getHeroPediaList();
     }
 
     @Override
