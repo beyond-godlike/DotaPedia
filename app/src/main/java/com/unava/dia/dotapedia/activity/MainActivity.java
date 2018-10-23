@@ -8,18 +8,12 @@ import android.view.View;
 
 import com.unava.dia.dotapedia.R;
 import com.unava.dia.dotapedia.data.DbHelper;
-import com.unava.dia.dotapedia.data.model.DotaHero;
-
-import java.io.IOException;
-import java.io.InputStream;
 
 import butterknife.ButterKnife;
-import io.realm.Realm;
 
 public class MainActivity extends AppCompatActivity {
 
     //@BindView(R.id.buttonPedia) Button pediaButton;
-    private Realm realm;
     private DbHelper dbHelper;
     public static Context context;
 
@@ -30,13 +24,12 @@ public class MainActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         context = getApplicationContext();
-        realm = Realm.getInstance(getApplicationContext());
 
         if(savedInstanceState != null) {
             // we need a realm db
         }
         else {
-            dbHelper = new DbHelper(this, realm);
+            dbHelper = DbHelper.getInstance();
             dbHelper.initDb();
         }
     }
@@ -45,7 +38,6 @@ public class MainActivity extends AppCompatActivity {
     public void onDestroy()
     {
         super.onDestroy();
-        realm.close();
     }
 
 

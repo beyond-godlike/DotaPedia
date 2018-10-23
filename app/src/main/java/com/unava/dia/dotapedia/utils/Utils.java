@@ -25,8 +25,8 @@ public class Utils {
 
     public static RealmResults<DotaHero> getHeroPediaList() {
         realm = Realm.getInstance(MainActivity.context);
-        dbHelper = new DbHelper(MainActivity.context, realm);
-        RealmResults<DotaHero> heroesList = dbHelper.getRealmList();
+        dbHelper = DbHelper.getInstance();
+        RealmResults<DotaHero> heroesList = DbHelper.getInstance().getRealmList();
 
         return heroesList;
     }
