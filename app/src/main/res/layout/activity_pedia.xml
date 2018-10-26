@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="horizontal"
     android:weightSum="100"
-    tools:context="com.unava.dia.dotapedia.activity.Pedia">
+    tools:context=".ui.activity.Pedia">
 
 
     <FrameLayout

@@ -1,4 +1,4 @@
-package com.unava.dia.dotapedia.adapters;
+package com.unava.dia.dotapedia.ui.adapters;
 
 import android.app.Activity;
 import android.content.Context;
@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 
 import com.unava.dia.dotapedia.R;
 import com.unava.dia.dotapedia.RecyclerViewClickListener;
-import com.unava.dia.dotapedia.activity.HeroConstructor;
+import com.unava.dia.dotapedia.ui.activity.HeroConstructor;
 import com.unava.dia.dotapedia.data.model.DotaHero;
 import io.realm.RealmResults;
 

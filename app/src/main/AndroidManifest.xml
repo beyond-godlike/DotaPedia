@@ -8,19 +8,19 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.MainActivity">
+        <activity android:name=".ui.activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.Pedia" />
-        <activity android:name=".activity.CardViewActivity" />
-        <activity android:name=".activity.Articles" />
-        <activity android:name=".activity.Article" />
-        <activity android:name=".activity.HeroConstructor" />
-        <activity android:name=".activity.ChooseHeroActivity"></activity>
+        <activity android:name=".ui.activity.Pedia" />
+        <activity android:name=".ui.activity.CardViewActivity" />
+        <activity android:name=".ui.activity.Articles" />
+        <activity android:name=".ui.activity.Article" />
+        <activity android:name=".ui.activity.HeroConstructor" />
+        <activity android:name=".ui.activity.ChooseHeroActivity"></activity>
     </application>
 
 </manifest>

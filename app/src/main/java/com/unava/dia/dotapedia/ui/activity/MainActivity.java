@@ -1,4 +1,4 @@
-package com.unava.dia.dotapedia.activity;
+package com.unava.dia.dotapedia.ui.activity;
 
 import android.content.Context;
 import android.content.Intent;
@@ -8,6 +8,8 @@ import android.view.View;
 
 import com.unava.dia.dotapedia.R;
 import com.unava.dia.dotapedia.data.DbHelper;
+import com.unava.dia.dotapedia.utils.ToastUtil;
+import com.unava.dia.dotapedia.utils.Utils;
 
 import butterknife.ButterKnife;
 
@@ -57,5 +59,9 @@ public class MainActivity extends AppCompatActivity {
     public void onButtonHeroConstructorClicked(View view) {
         Intent intent = new Intent(MainActivity.this, ChooseHeroActivity.class);
         startActivity(intent);
+    }
+
+    public void onFabClicked(View view) {
+        ToastUtil.showToast(getApplicationContext(), "Centry ward позволяют видеть невидимых героев");
     }
 }

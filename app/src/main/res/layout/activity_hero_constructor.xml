@@ -5,7 +5,7 @@
     android:id="@+id/heroConstructor"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context="com.unava.dia.dotapedia.activity.HeroConstructor">
+    tools:context=".ui.activity.HeroConstructor">
 
     <LinearLayout
         android:layout_width="match_parent"

@@ -1,4 +1,4 @@
-package com.unava.dia.dotapedia.adapters;
+package com.unava.dia.dotapedia.ui.adapters;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -8,17 +8,17 @@ import com.unava.dia.dotapedia.R;
 import com.unava.dia.dotapedia.RecyclerViewClickListener;
 
 /**
- * Created by Dia on 14.10.2018.
+ * Created by Dia on 29.08.2018.
  */
 
-public class ChooseHeroViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+public class InformationViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    TextView nameTxt;
     RecyclerViewClickListener itemClickListener;
-    TextView heroName;
 
-    public ChooseHeroViewHolder(View itemView) {
+    public InformationViewHolder(View itemView) {
         super(itemView);
 
-        heroName = (TextView) itemView.findViewById(R.id.hero_name);
+        nameTxt = (TextView) itemView.findViewById(R.id.hero_name);
 
         itemView.setOnClickListener(this);
     }

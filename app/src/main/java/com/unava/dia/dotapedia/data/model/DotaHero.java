@@ -9,6 +9,7 @@ import io.realm.annotations.Ignore;
 
 public class DotaHero extends RealmObject {
     private String name = "";
+    private int type = 1;
 
     private String icon = "";
     private int ultimateLvlUnlock = 0;
@@ -370,5 +371,13 @@ public class DotaHero extends RealmObject {
 
     public void setBaseDamage2(double baseDamage2) {
         this.baseDamage2 = baseDamage2;
+    }
+
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
     }
 }

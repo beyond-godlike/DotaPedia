@@ -2,7 +2,7 @@ package com.unava.dia.dotapedia.data;
 
 import android.content.Context;
 
-import com.unava.dia.dotapedia.activity.MainActivity;
+import com.unava.dia.dotapedia.ui.activity.MainActivity;
 import com.unava.dia.dotapedia.data.model.DotaHero;
 
 import java.io.IOException;
@@ -21,6 +21,10 @@ public class DbHelper {
     private Context context;
     private Realm realm;
 
+    private RealmResults<DotaHero> heroesList;
+
+
+
     public static DbHelper getInstance() {
         return ourInstance;
     }
@@ -28,6 +32,8 @@ public class DbHelper {
     private DbHelper() {
         this.context = MainActivity.context;
         this.realm = Realm.getInstance(MainActivity.context);
+
+        heroesList = realm.where(DotaHero.class).findAll();
     }
 
     public void initDb() {
@@ -49,7 +55,6 @@ public class DbHelper {
 
     public RealmResults<DotaHero> getRealmList()
     {
-        RealmResults<DotaHero> heroesList = realm.where(DotaHero.class).findAll();
-        return heroesList;
+        return this.heroesList;
     }
 }

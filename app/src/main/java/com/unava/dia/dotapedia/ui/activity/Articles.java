@@ -1,4 +1,4 @@
-package com.unava.dia.dotapedia.activity;
+package com.unava.dia.dotapedia.ui.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -6,7 +6,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.unava.dia.dotapedia.R;
-import com.unava.dia.dotapedia.adapters.ArticlesAdapter;
+import com.unava.dia.dotapedia.ui.adapters.ArticlesAdapter;
 
 import java.util.ArrayList;
 

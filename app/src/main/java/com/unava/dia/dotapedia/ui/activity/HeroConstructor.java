@@ -1,4 +1,4 @@
-package com.unava.dia.dotapedia.activity;
+package com.unava.dia.dotapedia.ui.activity;
 
 import android.content.res.AssetManager;
 import android.graphics.drawable.Drawable;
@@ -9,8 +9,8 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.unava.dia.dotapedia.R;
-import com.unava.dia.dotapedia.data.DbHelper;
 import com.unava.dia.dotapedia.data.model.DotaHero;
+import com.unava.dia.dotapedia.presenter.HeroConstructorPresenter;
 import com.unava.dia.dotapedia.utils.Utils;
 
 import java.io.IOException;
@@ -18,10 +18,10 @@ import java.io.InputStream;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import io.realm.Realm;
 import io.realm.RealmResults;
 
 public class HeroConstructor extends AppCompatActivity {
+    HeroConstructorPresenter presenter;
     private RealmResults<DotaHero> heroesList;
     int heroId = 0;
     int level = 1;
@@ -51,6 +51,8 @@ public class HeroConstructor extends AppCompatActivity {
         setContentView(R.layout.activity_hero_constructor);
         ButterKnife.bind(this);
 
+        presenter = new HeroConstructorPresenter();
+
         heroId = this.getIntent().getFlags();
 
         if(savedInstanceState != null) {
@@ -73,28 +75,42 @@ public class HeroConstructor extends AppCompatActivity {
         DotaHero tempHero = heroesList.get(heroId);
 
         tempHero.currentLvl = lvl;
-        tempHero = changeStats(tempHero);
+        int type = tempHero.getType();
+
+        switch (type) {
+            case 1: tempHero = presenter.changeStatsStrength(tempHero);
+                break;
+            case 2: tempHero = presenter.changeStatsAgility(tempHero);
+                break;
+            case 3: tempHero = presenter.changeStatsIntelligence(tempHero);
+                break;
+        }
 
         //TODO заполнить весь UI
         imageButtonHero.setImageDrawable(Drawable.createFromStream(openImage(tempHero.getIcon()), null));
-        textViewLVL.setText(new Integer(tempHero.currentLvl).toString());
-        textViewHP.setText(String.format("%.5g%n", tempHero.currentHp));
-        textViewMP.setText(String.format("%.5g%n", tempHero.currentMp));
+        textViewLVL.setText(presenter.formatter(tempHero.currentLvl));
+        textViewHP.setText(presenter.formatter(tempHero.currentHp));
+        textViewMP.setText(presenter.formatter(tempHero.currentMp));
 
-        textViewStrength.setText(String.format("%.2g%n", tempHero.currentStrength));
-        textViewAgility.setText(String.format("%.2g%n", tempHero.currentAgility));
-        textViewIntelligence.setText(String.format("%.2g%n", tempHero.currentIntelligence));
+        textViewStrength.setText(presenter.formatter(tempHero.currentStrength) + " + "
+                + presenter.formatterD(tempHero.getAddSt()));
+
+        textViewAgility.setText(presenter.formatter(tempHero.currentAgility) + " + "
+                + presenter.formatterD(tempHero.getAddAg()));
+
+        textViewIntelligence.setText(presenter.formatter(tempHero.currentIntelligence) + " + "
+                + presenter.formatterD(tempHero.getAddInt()));
 
         //ATTACK
-        textViewAttack.setText(String.format("%.3g%n", tempHero.currentDmg1) + " + "
-        + String.format("%.2g%n", tempHero.currentDmg2));
+        textViewAttack.setText(presenter.formatter(tempHero.currentDmg1) + " + "
+        + presenter.formatter(tempHero.currentDmg2));
 
         // TODO recount
         // Armor
-        textViewArmor.setText(String.format("%.2g%n", tempHero.currentArmor));
+        textViewArmor.setText(presenter.formatter(tempHero.currentArmor));
 
         //Speed
-        textViewSpeed.setText(new Integer(tempHero.getSpeed()).toString());
+        textViewSpeed.setText(new Integer(tempHero.currentSpeed).toString());
 
         // Skills
         skill_one.setImageDrawable(Drawable.createFromStream(openImage(tempHero.getSkill1()), null));
@@ -103,33 +119,6 @@ public class HeroConstructor extends AppCompatActivity {
         skill_four.setImageDrawable(Drawable.createFromStream(openImage(tempHero.getUlt1()), null));
 
 
-    }
-
-    public DotaHero changeStats(DotaHero tempHero) {
-        // пересчитываем статы
-        tempHero.currentStrength = tempHero.getStrength() + tempHero.currentLvl * tempHero.getAddSt();
-        tempHero.currentAgility = tempHero.getAgility() + tempHero.currentLvl * tempHero.getAddAg();
-        tempHero.currentIntelligence = tempHero.getIntelligence() + tempHero.currentLvl * tempHero.getAddInt();
-
-        // пересчитываем скорость и броню
-        tempHero.currentDmg1 = (tempHero.currentLvl * tempHero.getAddSt()) + tempHero.getBaseDamage1();
-        tempHero.currentDmg2 = (tempHero.currentLvl * tempHero.getAddSt()) + tempHero.getBaseDamage2();
-
-        tempHero.currentArmor = tempHero.getPhysarmor() + (tempHero.getAddAg() * (1 / 6.25));
-
-
-                // высчитываем хп
-        tempHero.currentStrength = tempHero.getStrength()
-                + tempHero.currentLvl * tempHero.getAddSt();
-        tempHero.currentHp = tempHero.getBaseHP() + (tempHero.currentStrength * 22.5);
-
-
-        // высчитываем мп
-        tempHero.currentIntelligence = tempHero.getIntelligence()
-                + tempHero.currentLvl * tempHero.getAddInt();
-        tempHero.currentMp = tempHero.getBaseMP() + (tempHero.currentIntelligence * 12.0);
-
-        return tempHero;
     }
 
     public InputStream openImage(String path) {

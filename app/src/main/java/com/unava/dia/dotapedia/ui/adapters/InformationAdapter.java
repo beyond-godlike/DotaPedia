@@ -1,4 +1,4 @@
-package com.unava.dia.dotapedia.adapters;
+package com.unava.dia.dotapedia.ui.adapters;
 
 import android.app.Activity;
 import android.content.Context;

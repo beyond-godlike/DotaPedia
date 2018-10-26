@@ -1,4 +1,4 @@
-package com.unava.dia.dotapedia.fragment;
+package com.unava.dia.dotapedia.ui.fragment;
 
 import android.os.Bundle;
 import android.app.Fragment;
@@ -10,7 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.unava.dia.dotapedia.R;
-import com.unava.dia.dotapedia.adapters.InformationAdapter;
+import com.unava.dia.dotapedia.ui.adapters.InformationAdapter;
 import com.unava.dia.dotapedia.data.model.Hero;
 
 import java.util.ArrayList;

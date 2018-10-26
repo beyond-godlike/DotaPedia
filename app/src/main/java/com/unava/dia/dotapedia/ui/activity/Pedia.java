@@ -1,4 +1,4 @@
-package com.unava.dia.dotapedia.activity;
+package com.unava.dia.dotapedia.ui.activity;
 
 import android.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
@@ -7,8 +7,8 @@ import android.util.Log;
 
 import com.unava.dia.dotapedia.R;
 import com.unava.dia.dotapedia.data.model.Hero;
-import com.unava.dia.dotapedia.fragment.FragmentHeroes;
-import com.unava.dia.dotapedia.fragment.FragmentInformation;
+import com.unava.dia.dotapedia.ui.fragment.FragmentHeroes;
+import com.unava.dia.dotapedia.ui.fragment.FragmentInformation;
 import com.unava.dia.dotapedia.RecyclerViewClickListener;
 import com.unava.dia.dotapedia.utils.Utils;
 

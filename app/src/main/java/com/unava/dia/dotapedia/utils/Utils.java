@@ -1,6 +1,6 @@
 package com.unava.dia.dotapedia.utils;
 
-import com.unava.dia.dotapedia.activity.MainActivity;
+import com.unava.dia.dotapedia.ui.activity.MainActivity;
 import com.unava.dia.dotapedia.data.DbHelper;
 import com.unava.dia.dotapedia.data.XmlHelper;
 import com.unava.dia.dotapedia.data.model.DotaHero;

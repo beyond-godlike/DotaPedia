@@ -1,4 +1,4 @@
-package com.unava.dia.dotapedia.activity;
+package com.unava.dia.dotapedia.ui.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

@@ -10,7 +10,7 @@
 		xmlns:tools="http://schemas.android.com/tools"
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
-		tools:context="com.unava.dia.dotapedia.fragment.FragmentInformation">
+		tools:context="com.unava.dia.dotapedia.ui.fragment.fragment.FragmentInformation">
 
 		<TextView
 			android:text="TextView"
