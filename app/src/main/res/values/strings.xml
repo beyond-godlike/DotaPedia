@@ -1,4 +1,20 @@
 <resources>
     <string name="app_name">DotaPedia</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string-array name="tips">
+        <item>Try to fight creeps and enemy Heroes within the attack range of your team\'s Towers.</item>
+        <item>Remember to purchase items to restore your health and mana at the start of the game.</item>
+        <item>You can hold Alt and click on an ability to inform your teammates of that ability\'s current cooldown status.</item>
+        <item>You can inform your teammates that an enemy Hero is missing by holding Alt and clicking on that Hero\'s portrait in the Top Bar.</item>
+        <item>Always be polite, especially to your teammates. People are less likely to listen to those who are rude.</item>
+        <item>Players who abandon a match will be penalized.</item>
+        <item>Be nice to new players. Everyone has to start somewhere.</item>
+        <item>Global Items can be added to a Shuffle list, causing a different random item to be chosen for that slot for every match.</item>
+        <item>Positive reinforcement can go a long way toward victory.</item>
+        <item>Prefer to see icons of Heroes\' faces instead of color-coded symbols on the minimap? You can change this in the settings menu.</item>
+        <item>You can adjust how often hero voices are heard in the settings menu.</item>
+        <item>Holding Alt and clicking on your Buyback button, or on your gold, will alert your team of your Buyback status.</item>
+        <item>In All Pick, players who have not chosen a Hero before the timer expires will begin to lose their starting gold.</item>
+    </string-array>
 </resources>

@@ -2,9 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.unava.dia.dotapedia">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/test"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
@@ -16,7 +18,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.activity.Pedia" />
-        <activity android:name=".ui.activity.CardViewActivity" />
         <activity android:name=".ui.activity.Articles" />
         <activity android:name=".ui.activity.Article" />
         <activity android:name=".ui.activity.HeroConstructor" />

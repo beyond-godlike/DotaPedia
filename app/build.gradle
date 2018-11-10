@@ -10,6 +10,7 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        vectorDrawables.useSupportLibrary = true
     }
     buildTypes {
         release {
@@ -34,11 +35,16 @@ dependencies {
     testCompile 'junit:junit:4.12'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
     compile 'io.realm:realm-android:0.87.4'
-    compile 'com.google.dagger:dagger:2.13'
 
+    // Dagger2
+    compile 'com.google.dagger:dagger:2.13'
     annotationProcessor 'com.google.dagger:dagger-compiler:2.13'
 
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'com.melnykov:floatingactionbutton:1.1.0'
+
+    // Glide
+    compile 'com.github.bumptech.glide:glide:4.2.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.2.0'
 
 }

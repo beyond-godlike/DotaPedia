@@ -25,11 +25,11 @@
                 android:layout_marginTop="16dp"
                 android:id="@+id/clayout">
 
-                <ImageButton
+                <ImageView
                     app:srcCompat="@drawable/axe"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintLeft_toLeftOf="parent"
-                    android:id="@+id/imageButtonHero"
+                    android:id="@+id/imageViewHero"
                     android:scaleType="fitXY"
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content" />
@@ -39,8 +39,8 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/textViewLVL"
                     app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/imageButtonHero"
-                    app:layout_constraintRight_toRightOf="@+id/imageButtonHero"
+                    app:layout_constraintTop_toBottomOf="@+id/imageViewHero"
+                    app:layout_constraintRight_toRightOf="@+id/imageViewHero"
                     android:layout_marginTop="4dp"
                     android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium"
                     android:textAlignment="center"
@@ -85,12 +85,12 @@
                     android:fontFamily="sans-serif" />
 
                 <GridLayout
-                    android:rowCount="7"
+                    android:rowCount="9"
                     android:columnCount="3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintLeft_toRightOf="@+id/imageButtonHero"
+                    app:layout_constraintLeft_toRightOf="@+id/imageViewHero"
                     android:id="@+id/gridLayout">
 
                     <ImageView
@@ -195,7 +195,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textViewMP"
+                    app:layout_constraintTop_toBottomOf="@+id/gridLayout"
                     android:id="@+id/linearLayout3"
                     app:layout_constraintHorizontal_bias="0.0">
 
@@ -206,6 +206,7 @@
                         android:cropToPadding="false"
                         android:adjustViewBounds="true"
                         android:scaleType="fitXY"
+                        android:onClick="onSkillOneClocked"
                         android:layout_width="80dp"
                         android:layout_height="80dp"
                         android:background="@drawable/shadow" />
@@ -300,11 +301,15 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="30">
-            <ListView
+            <TextView
+                android:padding="16dp"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:text="skill_name"
+                android:id="@+id/skillDescription">
 
-            </ListView>
+            </TextView>
         </LinearLayout>
     </LinearLayout>
 

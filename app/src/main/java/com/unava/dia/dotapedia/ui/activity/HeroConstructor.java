@@ -1,20 +1,18 @@
 package com.unava.dia.dotapedia.ui.activity;
 
-import android.content.res.AssetManager;
 import android.graphics.drawable.Drawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.unava.dia.dotapedia.R;
 import com.unava.dia.dotapedia.data.model.DotaHero;
 import com.unava.dia.dotapedia.presenter.HeroConstructorPresenter;
+import com.unava.dia.dotapedia.utils.GlideUtil;
 import com.unava.dia.dotapedia.utils.Utils;
-
-import java.io.IOException;
-import java.io.InputStream;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -26,10 +24,12 @@ public class HeroConstructor extends AppCompatActivity {
     int heroId = 0;
     int level = 1;
 
+    DotaHero tempHero;
+
     @BindView(R.id.textViewLVL) TextView textViewLVL;
     @BindView(R.id.textViewHP) TextView textViewHP;
     @BindView(R.id.textViewMP) TextView textViewMP;
-    @BindView(R.id.imageButtonHero) ImageButton imageButtonHero;
+    @BindView(R.id.imageViewHero) ImageView imageViewHero;
 
     @BindView(R.id.textViewStrength) TextView textViewStrength;
     @BindView(R.id.textViewAgility) TextView textViewAgility;
@@ -43,6 +43,8 @@ public class HeroConstructor extends AppCompatActivity {
     @BindView(R.id.skill_two) ImageButton skill_two;
     @BindView(R.id.skill_three) ImageButton skill_three;
     @BindView(R.id.skill_four) ImageButton skill_four;
+
+    @BindView(R.id.skillDescription) TextView skillDescription;
 
 
     @Override
@@ -72,9 +74,9 @@ public class HeroConstructor extends AppCompatActivity {
     }
 
     public void updateActivity(int heroId, int lvl) {
-        DotaHero tempHero = heroesList.get(heroId);
+        tempHero = heroesList.get(heroId);
 
-        tempHero.currentLvl = lvl;
+        tempHero.currentLvl = lvl - 1; // за первый лвл мы не прибавляем статы
         int type = tempHero.getType();
 
         switch (type) {
@@ -87,11 +89,21 @@ public class HeroConstructor extends AppCompatActivity {
         }
 
         //TODO заполнить весь UI
-        imageButtonHero.setImageDrawable(Drawable.createFromStream(openImage(tempHero.getIcon()), null));
-        textViewLVL.setText(presenter.formatter(tempHero.currentLvl));
-        textViewHP.setText(presenter.formatter(tempHero.currentHp));
+        //imageViewHero.setImageDrawable(Drawable.createFromStream(Utils.openImage(tempHero.getIcon(), getApplicationContext()), null));
+        // Try Glide
+        GlideUtil.setImageHeroSmall(imageViewHero, heroId);
+
+
+        textViewLVL.setText(presenter.formatter(tempHero.currentLvl + 1));
+
+        // EHP
+        textViewHP.setText(presenter.formatter(tempHero.currentHp) + " ("
+        + presenter.formatter(tempHero.currentEHP) + "), ("
+        + presenter.formatter(tempHero.currentEHPm) + ") ");
+
         textViewMP.setText(presenter.formatter(tempHero.currentMp));
 
+        // Stats
         textViewStrength.setText(presenter.formatter(tempHero.currentStrength) + " + "
                 + presenter.formatterD(tempHero.getAddSt()));
 
@@ -113,27 +125,11 @@ public class HeroConstructor extends AppCompatActivity {
         textViewSpeed.setText(new Integer(tempHero.currentSpeed).toString());
 
         // Skills
-        skill_one.setImageDrawable(Drawable.createFromStream(openImage(tempHero.getSkill1()), null));
-        skill_two.setImageDrawable(Drawable.createFromStream(openImage(tempHero.getSkill2()), null));
-        skill_three.setImageDrawable(Drawable.createFromStream(openImage(tempHero.getSkill3()), null));
-        skill_four.setImageDrawable(Drawable.createFromStream(openImage(tempHero.getUlt1()), null));
-
-
+        skill_one.setImageDrawable(Drawable.createFromStream(Utils.openImage(tempHero.getSkill1(), getApplicationContext()), null));
+        skill_two.setImageDrawable(Drawable.createFromStream(Utils.openImage(tempHero.getSkill2(), getApplicationContext()), null));
+        skill_three.setImageDrawable(Drawable.createFromStream(Utils.openImage(tempHero.getSkill3(), getApplicationContext()), null));
+        skill_four.setImageDrawable(Drawable.createFromStream(Utils.openImage(tempHero.getUlt1(), getApplicationContext()), null));
     }
-
-    public InputStream openImage(String path) {
-        AssetManager am = getApplicationContext().getResources().getAssets();
-        InputStream  stream = null;
-
-        try {
-            stream = am.open(path);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return stream;
-    }
-
-
     @Override
     public void onDestroy()
     {
@@ -160,5 +156,10 @@ public class HeroConstructor extends AppCompatActivity {
     public void onMinLvlClicked(View view) {
         level = 1;
         updateActivity(heroId, level);
+    }
+
+    public void onSkillOneClocked(View view) {
+        //tempHero.getSkill1Description();
+        skillDescription.setText(tempHero.getSkill1());
     }
 }

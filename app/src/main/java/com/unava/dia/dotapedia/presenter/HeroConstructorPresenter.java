@@ -15,10 +15,11 @@ public class HeroConstructorPresenter {
         tempHero.currentIntelligence = tempHero.getIntelligence() + tempHero.currentLvl * tempHero.getAddInt();
 
         // пересчитываем скорость и броню
-        tempHero.currentDmg1 = (tempHero.currentLvl * tempHero.getAddSt()) + tempHero.getBaseDamage1();
-        tempHero.currentDmg2 = (tempHero.currentLvl * tempHero.getAddSt()) + tempHero.getBaseDamage2();
+        tempHero.currentDmg1 = (tempHero.currentLvl * tempHero.getAddSt()) + tempHero.getBaseDamage1() + tempHero.getStrength();
+        tempHero.currentDmg2 = (tempHero.currentLvl * tempHero.getAddSt()) + tempHero.getBaseDamage2()+ tempHero.getStrength();
 
         tempHero.currentArmor = tempHero.getPhysarmor() + (tempHero.currentAgility * 0.16);
+        tempHero.magResist = 0.25;
 
         tempHero.currentSpeed = (int) (tempHero.getSpeed() + (tempHero.currentAgility * 0.05));
 
@@ -34,6 +35,10 @@ public class HeroConstructorPresenter {
                 + tempHero.currentLvl * tempHero.getAddInt();
         tempHero.currentMp = tempHero.getBaseMP() + (tempHero.currentIntelligence * 12.0);
 
+        // ЭХП
+        tempHero.currentEHP = tempHero.currentHp * (tempHero.currentArmor * 0.06 + 1);
+        tempHero.currentEHPm = tempHero.currentHp / (1 - tempHero.magResist);
+
         return tempHero;
     }
 
@@ -44,10 +49,11 @@ public class HeroConstructorPresenter {
         tempHero.currentIntelligence = tempHero.getIntelligence() + tempHero.currentLvl * tempHero.getAddInt();
 
         // пересчитываем скорость и броню
-        tempHero.currentDmg1 = (tempHero.currentLvl * tempHero.getAddAg()) + tempHero.getBaseDamage1();
-        tempHero.currentDmg2 = (tempHero.currentLvl * tempHero.getAddAg()) + tempHero.getBaseDamage2();
+        tempHero.currentDmg1 = (tempHero.currentLvl * tempHero.getAddAg()) + tempHero.getBaseDamage1() + tempHero.getAgility();
+        tempHero.currentDmg2 = (tempHero.currentLvl * tempHero.getAddAg()) + tempHero.getBaseDamage2() + tempHero.getAgility();
 
         tempHero.currentArmor = tempHero.getPhysarmor() + (tempHero.currentAgility * 0.2);
+        tempHero.magResist = 0.25;
 
         tempHero.currentSpeed = (int) (tempHero.getSpeed() + (tempHero.currentAgility * 0.063));
 
@@ -63,6 +69,10 @@ public class HeroConstructorPresenter {
                 + tempHero.currentLvl * tempHero.getAddInt();
         tempHero.currentMp = tempHero.getBaseMP() + (tempHero.currentIntelligence * 12.0);
 
+        // ЭХП
+        tempHero.currentEHP = tempHero.currentHp * (tempHero.currentArmor * 0.06 + 1);
+        tempHero.currentEHPm = tempHero.currentHp / (1 - tempHero.magResist);
+
         return tempHero;
     }
 
@@ -73,10 +83,11 @@ public class HeroConstructorPresenter {
         tempHero.currentIntelligence = tempHero.getIntelligence() + tempHero.currentLvl * tempHero.getAddInt();
 
         // пересчитываем скорость и броню
-        tempHero.currentDmg1 = (tempHero.currentLvl * tempHero.getAddInt()) + tempHero.getBaseDamage1();
-        tempHero.currentDmg2 = (tempHero.currentLvl * tempHero.getAddInt()) + tempHero.getBaseDamage2();
+        tempHero.currentDmg1 = (tempHero.currentLvl * tempHero.getAddInt()) + tempHero.getBaseDamage1() + tempHero.getIntelligence();
+        tempHero.currentDmg2 = (tempHero.currentLvl * tempHero.getAddInt()) + tempHero.getBaseDamage2() + tempHero.getIntelligence();
 
         tempHero.currentArmor = tempHero.getPhysarmor() + (tempHero.currentAgility * 0.16);
+        tempHero.magResist = 0.25;
 
         tempHero.currentSpeed = (int) (tempHero.getSpeed() + (tempHero.currentAgility * 0.05));
 
@@ -91,6 +102,10 @@ public class HeroConstructorPresenter {
         tempHero.currentIntelligence = tempHero.getIntelligence()
                 + tempHero.currentLvl * tempHero.getAddInt();
         tempHero.currentMp = tempHero.getBaseMP() + (tempHero.currentIntelligence * 15.0);
+
+        // ЭХП
+        tempHero.currentEHP = tempHero.currentHp * (tempHero.currentArmor * 0.06 + 1);
+        tempHero.currentEHPm = tempHero.currentHp / (1 - tempHero.magResist);
 
         return tempHero;
     }

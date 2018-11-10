@@ -2,6 +2,7 @@ package com.unava.dia.dotapedia.ui.adapters;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.unava.dia.dotapedia.R;
@@ -13,12 +14,15 @@ import com.unava.dia.dotapedia.RecyclerViewClickListener;
 
 public class InformationViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
     TextView nameTxt;
+    ImageView heroImage;
     RecyclerViewClickListener itemClickListener;
 
     public InformationViewHolder(View itemView) {
         super(itemView);
 
         nameTxt = (TextView) itemView.findViewById(R.id.hero_name);
+        heroImage = (ImageView) itemView.findViewById(R.id.cardImageView);
+
 
         itemView.setOnClickListener(this);
     }

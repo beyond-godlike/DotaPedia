@@ -24,11 +24,11 @@ public class ChooseHeroActivity extends AppCompatActivity {
         heroesList = Utils.getHeroPediaList();
 
         //SET UP RECYCLERVIEW
-        RecyclerView rv = (RecyclerView) findViewById(R.id.chooseHeroRv);
+        RecyclerView rv = (RecyclerView) findViewById(R.id.chooseHero);
         rv.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
 
         //ADAPTER
-        ChooseHeroAdapter adapter = new ChooseHeroAdapter(getApplicationContext(), heroesList, this);
-        rv.setAdapter(adapter);
+        ChooseHeroAdapter adapterSt = new ChooseHeroAdapter(getApplicationContext(), heroesList, this);
+        rv.setAdapter(adapterSt);
     }
 }

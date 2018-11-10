@@ -78,7 +78,16 @@ public class DotaHero extends RealmObject {
 	public double currentMp = 0.0;
 
     @Ignore
+    public double currentEHP = 0.0;
+
+    @Ignore
+    public double currentEHPm = 0.0;
+
+    @Ignore
     public double currentArmor = 0.0;
+
+    @Ignore
+    public double magResist = 0.0;
 	
 	@Ignore
 	public double currentDmg1 = 0.0;

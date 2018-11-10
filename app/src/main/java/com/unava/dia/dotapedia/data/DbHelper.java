@@ -34,6 +34,7 @@ public class DbHelper {
         this.realm = Realm.getInstance(MainActivity.context);
 
         heroesList = realm.where(DotaHero.class).findAll();
+        //heroesList = realm.where(DotaHero.class).findAllAsync();
     }
 
     public void initDb() {

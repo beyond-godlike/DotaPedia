@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 import com.unava.dia.dotapedia.R;
 import com.unava.dia.dotapedia.data.DbHelper;
@@ -62,6 +63,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onFabClicked(View view) {
-        ToastUtil.showToast(getApplicationContext(), "Centry ward позволяют видеть невидимых героев");
+        ToastUtil.showToast(MainActivity.this, getApplicationContext(), Utils.getRandomTip());
     }
 }

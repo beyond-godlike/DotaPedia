@@ -2,6 +2,7 @@ package com.unava.dia.dotapedia.ui.adapters;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,9 +10,14 @@ import android.view.ViewGroup;
 
 import com.unava.dia.dotapedia.R;
 import com.unava.dia.dotapedia.RecyclerViewClickListener;
+import com.unava.dia.dotapedia.data.model.DotaHero;
 import com.unava.dia.dotapedia.data.model.Hero;
+import com.unava.dia.dotapedia.utils.GlideUtil;
+import com.unava.dia.dotapedia.utils.Utils;
 
 import java.util.ArrayList;
+
+import io.realm.RealmResults;
 
 /**
  * Created by Dia on 29.08.2018.
@@ -20,6 +26,7 @@ import java.util.ArrayList;
 public class InformationAdapter extends RecyclerView.Adapter<InformationViewHolder> {
     Context c;
     ArrayList<Hero> heroes;
+    RealmResults<DotaHero> heroesList;
     Activity activity;
 
     public InformationAdapter(Context c, ArrayList<Hero> h, Activity activity) {
@@ -27,6 +34,7 @@ public class InformationAdapter extends RecyclerView.Adapter<InformationViewHold
 
         this.c = c;
         this.heroes = h;
+        this.heroesList = Utils.getHeroPediaList();
         this.activity = activity;
     }
 
@@ -44,6 +52,8 @@ public class InformationAdapter extends RecyclerView.Adapter<InformationViewHold
 
         //BIND DATA
         holder.nameTxt.setText(heroes.get(position).name);
+        //holder.heroImage.setImageDrawable(Drawable.createFromStream(Utils.openImage(heroesList.get(position).getIcon(), c), null));
+        GlideUtil.setImageHeroSmall(holder.heroImage, position);
 
         //ITEM CLICK
         // ЛИСНЕР ПО КНОПКАМ КАРТОЧКИ
