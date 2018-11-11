@@ -2,6 +2,7 @@ package com.unava.dia.dotapedia.ui.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
@@ -21,7 +22,7 @@ public class ChooseHeroActivity extends AppCompatActivity {
         setContentView(R.layout.activity_choose_hero);
 
 
-        heroesList = Utils.getHeroPediaList();
+        heroesList = Utils.getHeroPediaList(this);
 
         //SET UP RECYCLERVIEW
         RecyclerView rv = (RecyclerView) findViewById(R.id.chooseHero);

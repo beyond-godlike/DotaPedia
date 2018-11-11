@@ -22,7 +22,6 @@ import io.realm.RealmResults;
  */
 
 public class Utils {
-    private static DbHelper dbHelper;
     private static Realm realm;
     private static String[] tips;
 
@@ -30,22 +29,21 @@ public class Utils {
         // низя делать паблик
     }
 
-    public static RealmResults<DotaHero> getHeroPediaList() {
-        realm = Realm.getInstance(MainActivity.context);
-        dbHelper = DbHelper.getInstance();
-        RealmResults<DotaHero> heroesList = DbHelper.getInstance().getRealmList();
+    public static RealmResults<DotaHero> getHeroPediaList(Context context) {
+        realm = Realm.getInstance(context);
+        RealmResults<DotaHero> heroesList = DbHelper.getInstance(context).getRealmList();
 
         return heroesList;
     }
 
-    public static ArrayList<Hero> getHeroList() {
-        ArrayList<Hero> heroes = XmlHelper.getInstance().getHeroList();
+    public static ArrayList<Hero> getHeroList(Context context) {
+        ArrayList<Hero> heroes = XmlHelper.getInstance(context).getHeroList();
 
         return heroes;
     }
 
-    public static String getRandomTip() {
-        tips = MainActivity.context.getResources().getStringArray(R.array.tips);
+    public static String getRandomTip(Context context) {
+        tips = context.getResources().getStringArray(R.array.tips);
 
         int pos = 1 + (int) (Math.random() * 12);
         return tips[pos];

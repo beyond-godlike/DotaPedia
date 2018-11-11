@@ -1,5 +1,7 @@
 package com.unava.dia.dotapedia.data;
 
+import android.content.Context;
+
 import com.unava.dia.dotapedia.ui.activity.MainActivity;
 import com.unava.dia.dotapedia.data.model.Hero;
 
@@ -15,16 +17,19 @@ import java.util.ArrayList;
  * Created by Dia on 23.10.2018.
  */
 public class XmlHelper {
-    private static XmlHelper ourInstance = new XmlHelper();
+    private static XmlHelper ourInstance;
 
     private ArrayList<Hero> heroList;
 
-    public static XmlHelper getInstance() {
-        return ourInstance;
+    public static XmlHelper getInstance(Context context) {
+        if (ourInstance != null)
+            return ourInstance;
+        else
+            return new XmlHelper(context);
     }
 
-    private XmlHelper() {
-        initHeroList();
+    private XmlHelper(Context context) {
+        initHeroList(context);
     }
 
 
@@ -32,12 +37,12 @@ public class XmlHelper {
         return heroList;
     }
 
-    public void initHeroList() {
-        doParse("heroes.xml");
+    public void initHeroList(Context context) {
+        doParse(context, "heroes.xml");
     }
 
     // инстанс парсера
-    void doParse(String filename) {
+    void doParse(Context context, String filename) {
         XmlPullParserFactory pullParserFactory;
         XmlPullParser parser;
 
@@ -45,7 +50,7 @@ public class XmlHelper {
             pullParserFactory = XmlPullParserFactory.newInstance();
             parser = pullParserFactory.newPullParser();
 
-            InputStream in_s = MainActivity.context.getAssets().open(filename);
+            InputStream in_s = context.getAssets().open(filename);
             parser.setFeature(XmlPullParser.FEATURE_PROCESS_NAMESPACES, false);
             parser.setInput(in_s, null);
 

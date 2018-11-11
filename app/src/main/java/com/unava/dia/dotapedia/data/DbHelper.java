@@ -16,7 +16,7 @@ import io.realm.RealmResults;
  */
 
 public class DbHelper {
-    private static DbHelper ourInstance = new DbHelper();
+    private static DbHelper ourInstance;
 
     private Context context;
     private Realm realm;
@@ -25,13 +25,16 @@ public class DbHelper {
 
 
 
-    public static DbHelper getInstance() {
-        return ourInstance;
+    public static DbHelper getInstance(Context context) {
+        if (ourInstance != null)
+            return ourInstance;
+        else
+            return new DbHelper(context);
     }
 
-    private DbHelper() {
-        this.context = MainActivity.context;
-        this.realm = Realm.getInstance(MainActivity.context);
+    private DbHelper(Context context) {
+        this.context = context;
+        this.realm = Realm.getInstance(context);
 
         heroesList = realm.where(DotaHero.class).findAll();
         //heroesList = realm.where(DotaHero.class).findAllAsync();

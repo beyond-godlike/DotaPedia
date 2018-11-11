@@ -31,7 +31,7 @@ public class Pedia extends AppCompatActivity implements RecyclerViewClickListene
         }
         else {
             // load list first time
-            heroList = Utils.getHeroList();
+            heroList = Utils.getHeroList(this);
         }
 
         // pass into a fragment

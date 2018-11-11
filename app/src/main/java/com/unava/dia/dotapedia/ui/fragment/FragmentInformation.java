@@ -58,7 +58,7 @@ public class FragmentInformation extends Fragment {
 
         // достаем список из bundle
         heroes = getArguments().getParcelableArrayList("HEROES_LIST");
-        listHeroImages = Utils.getHeroPediaList();
+        listHeroImages = Utils.getHeroPediaList(getActivity());
     }
 
     @Override

@@ -34,8 +34,8 @@ public class InformationAdapter extends RecyclerView.Adapter<InformationViewHold
 
         this.c = c;
         this.heroes = h;
-        this.heroesList = Utils.getHeroPediaList();
         this.activity = activity;
+        this.heroesList = Utils.getHeroPediaList(activity.getApplicationContext());
     }
 
     @Override

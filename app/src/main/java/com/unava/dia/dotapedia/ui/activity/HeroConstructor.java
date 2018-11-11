@@ -58,10 +58,10 @@ public class HeroConstructor extends AppCompatActivity {
         heroId = this.getIntent().getFlags();
 
         if(savedInstanceState != null) {
-            heroesList = Utils.getHeroPediaList();
+            heroesList = Utils.getHeroPediaList(this);
         }
         else {
-            heroesList = Utils.getHeroPediaList();
+            heroesList = Utils.getHeroPediaList(this);
         }
 
         updateActivity(heroId, level);

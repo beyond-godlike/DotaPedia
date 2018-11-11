@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
             // we need a realm db
         }
         else {
-            dbHelper = DbHelper.getInstance();
+            dbHelper = DbHelper.getInstance(this);
             dbHelper.initDb();
         }
     }
@@ -63,6 +63,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onFabClicked(View view) {
-        ToastUtil.showToast(MainActivity.this, getApplicationContext(), Utils.getRandomTip());
+        ToastUtil.showToast(MainActivity.this, getApplicationContext(), Utils.getRandomTip(this));
     }
 }
