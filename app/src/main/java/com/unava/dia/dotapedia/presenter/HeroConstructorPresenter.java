@@ -111,7 +111,7 @@ public class HeroConstructorPresenter {
     }
 
     public String formatter(double val) {
-        String value = (new Integer((int) val).toString());
+        String value = (Integer.toString((int) val));
 
         return value;
     }
