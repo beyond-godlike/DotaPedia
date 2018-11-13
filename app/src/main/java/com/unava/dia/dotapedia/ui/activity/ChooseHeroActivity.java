@@ -24,9 +24,11 @@ public class ChooseHeroActivity extends AppCompatActivity {
 
         heroesList = Utils.getHeroPediaList(this);
 
+        int columns = Utils.calculateColumns(getApplicationContext());
+
         //SET UP RECYCLERVIEW
         RecyclerView rv = (RecyclerView) findViewById(R.id.chooseHero);
-        rv.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+        rv.setLayoutManager(new GridLayoutManager(getApplicationContext(), columns));
 
         //ADAPTER
         ChooseHeroAdapter adapterSt = new ChooseHeroAdapter(getApplicationContext(), heroesList, this);

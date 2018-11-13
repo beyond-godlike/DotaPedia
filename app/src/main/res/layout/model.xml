@@ -27,6 +27,6 @@
         android:layout_height="72dp"
         card_view:srcCompat="@drawable/axe"
         android:id="@+id/cardImageView"
-        android:scaleType="centerCrop" />
+        android:scaleType="fitXY" />
 
 </android.support.v7.widget.CardView>

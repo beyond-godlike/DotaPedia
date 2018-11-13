@@ -2,6 +2,7 @@ package com.unava.dia.dotapedia.utils;
 
 import android.content.Context;
 import android.content.res.AssetManager;
+import android.util.DisplayMetrics;
 
 import com.unava.dia.dotapedia.R;
 import com.unava.dia.dotapedia.ui.activity.MainActivity;
@@ -59,5 +60,13 @@ public class Utils {
             e.printStackTrace();
         }
         return stream;
+    }
+
+    public static int calculateColumns(Context context) {
+        DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
+        float dpWidth = displayMetrics.widthPixels / displayMetrics.density;
+        int columns = (int) (dpWidth / 150);
+
+        return columns;
     }
 }

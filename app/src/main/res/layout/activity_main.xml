@@ -7,51 +7,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="horizontal"
-    android:weightSum="100"
     tools:context=".ui.activity.MainActivity">
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center">
-        <Button
-            android:text="Pedia"
-            android:onClick="onButtonPediaClicked"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="20"
-            android:layout_margin="16dp"
-            android:id="@+id/buttonPedia"
-            android:background="@drawable/btn_new"
-            tools:ignore="HardcodedText" />
-
-        <Button
-            android:text="Articles"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="20"
-            android:layout_margin="16dp"
-            android:onClick="onButtonArticlesClicked"
-            android:id="@+id/buttonArticles"
-            android:background="@drawable/btn_new" />
-
-        <Button
-            android:text="Hero constructor"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="35"
-            android:layout_margin="16dp"
-            android:onClick="onButtonHeroConstructorClicked"
-            android:id="@+id/buttonHeroConstructor"
-            android:background="@drawable/btn_new"
-            android:elevation="0dp" />
-    </LinearLayout>
 
 
     <com.melnykov.fab.FloatingActionButton
         android:id="@+id/fab"
         android:layout_width="wrap_content"
-        android:layout_height="73dp"
+        android:layout_height="56dp"
+        android:layout_margin="16dp"
         android:layout_gravity="bottom|right"
         android:layout_marginBottom="16dp"
         android:layout_marginEnd="16dp"
@@ -64,5 +27,49 @@
         app:fab_colorPressed="@color/secondaryDarkColor"
         app:fab_colorRipple="@color/secondaryLightColor"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:layout_editor_absoluteX="496dp" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginStart="16dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintRight_toRightOf="parent">
+        <Button
+            android:text="Pedia"
+            android:onClick="onButtonPediaClicked"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_margin="16dp"
+            android:id="@+id/buttonPedia"
+            android:background="@drawable/btn_new"
+            tools:ignore="HardcodedText" />
+
+        <Button
+            android:text="Articles"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_margin="16dp"
+            android:onClick="onButtonArticlesClicked"
+            android:id="@+id/buttonArticles"
+            android:background="@drawable/btn_new" />
+
+        <Button
+            android:text="Hero constructor"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_margin="16dp"
+            android:onClick="onButtonHeroConstructorClicked"
+            android:id="@+id/buttonHeroConstructor"
+            android:background="@drawable/btn_new"
+            android:elevation="0dp" />
+    </LinearLayout>
 </android.support.constraint.ConstraintLayout>
