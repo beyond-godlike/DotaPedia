@@ -21,7 +21,8 @@
         <activity android:name=".ui.activity.Articles" />
         <activity android:name=".ui.activity.Article" />
         <activity android:name=".ui.activity.HeroConstructor" />
-        <activity android:name=".ui.activity.ChooseHeroActivity"></activity>
+        <activity android:name=".ui.activity.ChooseHeroActivity" />
+        <activity android:name=".ui.activity.DrawerInformationHeroes"></activity>
     </application>
 
 </manifest>

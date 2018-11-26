@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void onButtonPediaClicked(View view) {
-        Intent intent = new Intent(MainActivity.this, Pedia.class);
+        Intent intent = new Intent(MainActivity.this, DrawerInformationHeroes.class);
         startActivity(intent);
 
         // create a realm db?

@@ -1,4 +1,5 @@
 <resources>
+    <attr format="reference" name="MyCardViewStyle"/>
 
 <!-- Base application theme. -->
     <!-- Base application theme. -->
@@ -8,4 +9,11 @@
         <item name="colorPrimaryDark">#005005</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
+
+    <style name="MyCardViewStyle" parent="CardView.Light">
+        <item name="cardCornerRadius">@dimen/cardview_default_radius</item>
+        <item name="cardElevation">@dimen/cardview_default_elevation</item>
+        <item name="android:textColor">@color/secondaryTextColor</item>
+    </style>
+
 </resources>

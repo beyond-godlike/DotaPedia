@@ -14,9 +14,8 @@
         android:weightSum="100">
 
         <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="70">
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
             <android.support.constraint.ConstraintLayout
                 android:layout_width="match_parent"
@@ -197,7 +196,8 @@
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/gridLayout"
                     android:id="@+id/linearLayout3"
-                    app:layout_constraintHorizontal_bias="0.0">
+                    app:layout_constraintHorizontal_bias="0.0"
+                    android:layout_marginTop="8dp">
 
                     <ImageButton
                         app:srcCompat="@drawable/skill_one"
@@ -233,8 +233,30 @@
                         android:background="@drawable/shadow" />
 
                     <ImageButton
-                        app:srcCompat="@drawable/skill_four"
+                        app:srcCompat="@drawable/empty_icon"
                         android:id="@+id/skill_four"
+                        android:padding="8dp"
+                        android:adjustViewBounds="true"
+                        android:scaleType="fitXY"
+                        android:layout_height="80dp"
+                        android:layout_width="80dp"
+                        android:visibility="gone"
+                        android:background="@drawable/shadow" />
+
+                    <ImageButton
+                        app:srcCompat="@drawable/empty_icon"
+                        android:id="@+id/skill_five"
+                        android:padding="8dp"
+                        android:adjustViewBounds="true"
+                        android:scaleType="fitXY"
+                        android:layout_height="80dp"
+                        android:layout_width="80dp"
+                        android:visibility="gone"
+                        android:background="@drawable/shadow" />
+
+                    <ImageButton
+                        app:srcCompat="@drawable/skill_four"
+                        android:id="@+id/skill_six"
                         android:padding="8dp"
                         android:adjustViewBounds="true"
                         android:scaleType="fitXY"
@@ -255,7 +277,8 @@
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
                     android:background="@drawable/btn_new"
-                    android:layout_margin="2dp" />
+                    android:layout_margin="8dp"
+                    android:layout_marginTop="16dp" />
 
                 <Button
                     android:onClick="onMinusLvlClicked"
@@ -267,7 +290,8 @@
                     app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
                     app:layout_constraintLeft_toRightOf="@+id/buttonPlus"
                     android:background="@drawable/btn_new"
-                    android:layout_margin="2dp" />
+                    android:layout_margin="8dp"
+                    android:layout_marginTop="16dp" />
 
                 <Button
                     android:onClick="onMaxLvlClicked"
@@ -279,7 +303,8 @@
                     app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
                     app:layout_constraintLeft_toRightOf="@+id/buttonMinus"
                     android:background="@drawable/btn_new"
-                    android:layout_margin="2dp" />
+                    android:layout_margin="8dp"
+                    android:layout_marginTop="16dp" />
 
                 <Button
                     android:onClick="onMinLvlClicked"
@@ -291,26 +316,30 @@
                     app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
                     app:layout_constraintLeft_toRightOf="@+id/buttonMaximum"
                     android:background="@drawable/btn_new"
-                    android:layout_margin="2dp" />
+                    android:layout_margin="8dp"
+                    android:layout_marginTop="16dp" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@+id/buttonPlus"
+                    app:layout_constraintLeft_toLeftOf="@+id/linearLayout3"
+                    android:layout_marginTop="24dp">
+                    <TextView
+                        android:padding="16dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAlignment="center"
+                        android:text="skill_name"
+                        android:id="@+id/skillDescription">
+
+                    </TextView>
+                </LinearLayout>
 
             </android.support.constraint.ConstraintLayout>
 
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="30">
-            <TextView
-                android:padding="16dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAlignment="center"
-                android:text="skill_name"
-                android:id="@+id/skillDescription">
-
-            </TextView>
-        </LinearLayout>
     </LinearLayout>
 
 </ScrollView>

@@ -124,7 +124,19 @@ public class HeroUtil {
             "zuus"
     };
 
+    static String[] imageList = new String[] {
+            "antimage_blink",
+            "tiny_toss",
+            "tiny_avalanche",
+            "tiny_craggy_exterior"
+
+    };
+
     public static String getHeroName(int heroId) {
         return heroList[heroId];
+    }
+
+    public static String getSkillId(int imageId) {
+        return imageList[imageId];
     }
 }

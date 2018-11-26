@@ -14,13 +14,11 @@ import com.unava.dia.dotapedia.RecyclerViewClickListener;
 
 public class ChooseHeroViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
     RecyclerViewClickListener itemClickListener;
-    TextView heroName;
     ImageView heroImage;
 
     public ChooseHeroViewHolder(View itemView) {
         super(itemView);
 
-        heroName = (TextView) itemView.findViewById(R.id.hero_name);
         heroImage = (ImageView) itemView.findViewById(R.id.cardImageView);
 
         itemView.setOnClickListener(this);

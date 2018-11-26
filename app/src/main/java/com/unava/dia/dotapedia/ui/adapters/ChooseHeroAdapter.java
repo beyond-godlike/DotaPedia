@@ -46,7 +46,6 @@ public class ChooseHeroAdapter extends RecyclerView.Adapter<ChooseHeroViewHolder
 
     @Override
     public void onBindViewHolder(final ChooseHeroViewHolder holder, int position) {
-        holder.heroName.setText(heroesList.get(position).getName());
         //holder.heroImage.setImageDrawable(Drawable.createFromStream(Utils.openImage(holder.heroImage.getIcon(), c), null));
         GlideUtil.setImageHeroSmall(holder.heroImage, position);
 

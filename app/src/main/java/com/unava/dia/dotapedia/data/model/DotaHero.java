@@ -55,8 +55,6 @@ public class DotaHero extends RealmObject {
     private String skill4 = "";
     private String skill5 = "";
     private String skill6 = "";
-    private String ult1 = "";
-    private String ult2 = "";
 	
 	// поля, не относящиеся к реалму
 	@Ignore
@@ -99,7 +97,6 @@ public class DotaHero extends RealmObject {
 	public int currentSpeed = 0;
 	
 
-	
 	///////////////////////////////////////////////////////////
 
     public String getName() {
@@ -308,22 +305,6 @@ public class DotaHero extends RealmObject {
 
     public void setSkill6(String skill6) {
         this.skill6 = skill6;
-    }
-
-    public String getUlt1() {
-        return ult1;
-    }
-
-    public void setUlt1(String ult1) {
-        this.ult1 = ult1;
-    }
-
-    public String getUlt2() {
-        return ult2;
-    }
-
-    public void setUlt2(String ult2) {
-        this.ult2 = ult2;
     }
 
     public double getBaseHP() {

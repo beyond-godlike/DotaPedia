@@ -43,6 +43,8 @@ public class HeroConstructor extends AppCompatActivity {
     @BindView(R.id.skill_two) ImageButton skill_two;
     @BindView(R.id.skill_three) ImageButton skill_three;
     @BindView(R.id.skill_four) ImageButton skill_four;
+    @BindView(R.id.skill_five) ImageButton skill_five;
+    @BindView(R.id.skill_six) ImageButton skill_six;
 
     @BindView(R.id.skillDescription) TextView skillDescription;
 
@@ -128,7 +130,18 @@ public class HeroConstructor extends AppCompatActivity {
         skill_one.setImageDrawable(Drawable.createFromStream(Utils.openImage(tempHero.getSkill1(), getApplicationContext()), null));
         skill_two.setImageDrawable(Drawable.createFromStream(Utils.openImage(tempHero.getSkill2(), getApplicationContext()), null));
         skill_three.setImageDrawable(Drawable.createFromStream(Utils.openImage(tempHero.getSkill3(), getApplicationContext()), null));
-        skill_four.setImageDrawable(Drawable.createFromStream(Utils.openImage(tempHero.getUlt1(), getApplicationContext()), null));
+        skill_six.setImageDrawable(Drawable.createFromStream(Utils.openImage(tempHero.getSkill6(), getApplicationContext()), null));
+
+        // check for another skills
+        if(!tempHero.getSkill4().isEmpty()) {
+            skill_four.setVisibility(View.VISIBLE);
+            skill_four.setImageDrawable(Drawable.createFromStream(Utils.openImage(tempHero.getSkill4(), getApplicationContext()), null));
+        }
+
+        if (!tempHero.getSkill5().isEmpty()) {
+            skill_five.setVisibility(View.VISIBLE);
+            skill_five.setImageDrawable(Drawable.createFromStream(Utils.openImage(tempHero.getSkill5(), getApplicationContext()), null));
+        }
     }
     @Override
     public void onDestroy()

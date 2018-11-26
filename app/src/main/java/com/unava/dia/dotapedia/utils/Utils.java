@@ -65,8 +65,22 @@ public class Utils {
     public static int calculateColumns(Context context) {
         DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
         float dpWidth = displayMetrics.widthPixels / displayMetrics.density;
-        int columns = (int) (dpWidth / 150);
+        int columns = (int) (dpWidth /  ((displayMetrics.widthPixels / 6) + 10));
 
         return columns;
+    }
+
+    public static int displayWidth(Context context) {
+        DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
+        int width = displayMetrics.widthPixels;
+
+        return width;
+    }
+
+    public static int displayHeight(Context context) {
+        DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
+        int height = displayMetrics.heightPixels;
+
+        return height;
     }
 }
