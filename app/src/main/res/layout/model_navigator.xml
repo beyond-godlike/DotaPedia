@@ -23,7 +23,6 @@
             android:scaleType="fitXY" />
 
         <TextView
-            android:padding="16dp"
             android:text="hero_name"
             android:id="@+id/hero_name"
             android:layout_width="match_parent"

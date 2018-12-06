@@ -6,7 +6,6 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.method.ScrollingMovementMethod;
@@ -17,12 +16,10 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.util.Util;
 import com.unava.dia.dotapedia.R;
-import com.unava.dia.dotapedia.RecyclerViewClickListener;
+import com.unava.dia.dotapedia.utils.RecyclerViewClickListener;
 import com.unava.dia.dotapedia.data.model.DotaHero;
 import com.unava.dia.dotapedia.data.model.Hero;
-import com.unava.dia.dotapedia.ui.adapters.ChooseHeroAdapter;
 import com.unava.dia.dotapedia.ui.adapters.NavigatorAdapter;
 import com.unava.dia.dotapedia.utils.Utils;
 

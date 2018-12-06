@@ -8,8 +8,10 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.unava.dia.dotapedia.utils.ProjectConstants;
 import com.unava.dia.dotapedia.R;
 import com.unava.dia.dotapedia.data.model.DotaHero;
+import com.unava.dia.dotapedia.data.model.Invoker;
 import com.unava.dia.dotapedia.presenter.HeroConstructorPresenter;
 import com.unava.dia.dotapedia.utils.GlideUtil;
 import com.unava.dia.dotapedia.utils.Utils;
@@ -23,8 +25,12 @@ public class HeroConstructor extends AppCompatActivity {
     private RealmResults<DotaHero> heroesList;
     int heroId = 0;
     int level = 1;
-
+    Invoker invoker;
     DotaHero tempHero;
+    String aboutSkillPath = "";
+
+    static final String STATE_HERO_LEVEL = "heroLevel";
+    static final String STATE_ABOUT_SKILL_PATH = "aboutSkillPath";
 
     @BindView(R.id.textViewLVL) TextView textViewLVL;
     @BindView(R.id.textViewHP) TextView textViewHP;
@@ -61,6 +67,9 @@ public class HeroConstructor extends AppCompatActivity {
 
         if(savedInstanceState != null) {
             heroesList = Utils.getHeroPediaList(this);
+            level = savedInstanceState.getInt(STATE_HERO_LEVEL);
+            aboutSkillPath = savedInstanceState.getString(STATE_ABOUT_SKILL_PATH);
+
         }
         else {
             heroesList = Utils.getHeroPediaList(this);
@@ -72,11 +81,21 @@ public class HeroConstructor extends AppCompatActivity {
 
     @Override
     protected void onSaveInstanceState(Bundle ourState) {
+        ourState.putInt(STATE_HERO_LEVEL, level);
+        ourState.putString(STATE_ABOUT_SKILL_PATH, aboutSkillPath);
         super.onSaveInstanceState(ourState);
     }
 
     public void updateActivity(int heroId, int lvl) {
         tempHero = heroesList.get(heroId);
+
+        // SET SKILL DESCRIPTION
+        if(aboutSkillPath.equals("")) aboutSkillPath = tempHero.getAboutSkill1();
+        skillDescription.setText(aboutSkillPath);
+
+        if(tempHero.getName().equals("Invoker")) {
+            invoker = new Invoker();
+        }
 
         tempHero.currentLvl = lvl - 1; // за первый лвл мы не прибавляем статы
         int type = tempHero.getType();
@@ -93,7 +112,8 @@ public class HeroConstructor extends AppCompatActivity {
         //TODO заполнить весь UI
         //imageViewHero.setImageDrawable(Drawable.createFromStream(Utils.openImage(tempHero.getIcon(), getApplicationContext()), null));
         // Try Glide
-        GlideUtil.setImageHeroSmall(imageViewHero, heroId);
+        GlideUtil.setImageHero(imageViewHero, heroId,
+                ProjectConstants.IMAGE_HERO_CONSTRUCTOR_WIDTH, ProjectConstants.IMAGE_HERO_CONSTRUCTOR_HEIGHT);
 
 
         textViewLVL.setText(presenter.formatter(tempHero.currentLvl + 1));
@@ -171,8 +191,66 @@ public class HeroConstructor extends AppCompatActivity {
         updateActivity(heroId, level);
     }
 
-    public void onSkillOneClocked(View view) {
-        //tempHero.getSkill1Description();
-        skillDescription.setText(tempHero.getSkill1());
+    public void onSkillOneClicked(View view) {
+        if(tempHero.getName().equals("Invoker")) {
+            invoker.pushEnd("q");
+        }
+        aboutSkillPath = tempHero.getAboutSkill1();
+        skillDescription.setText(aboutSkillPath);
+    }
+
+    public void onSkillTwoClicked(View view) {
+        if(tempHero.getName().equals("Invoker")) {
+            invoker.pushEnd("w");
+        }
+
+        aboutSkillPath = tempHero.getAboutSkill2();
+        skillDescription.setText(aboutSkillPath);
+    }
+
+    public void onSkillFourClicked(View view) {
+        aboutSkillPath = tempHero.getAboutSkill4();
+        skillDescription.setText(aboutSkillPath);
+    }
+
+    public void onSkillFiveClicked(View view) {
+        aboutSkillPath = tempHero.getAboutSkill5();
+        skillDescription.setText(aboutSkillPath);
+    }
+
+    public void onSkillThreeClicked(View view) {
+        if(tempHero.getName().equals("Invoker")) {
+            invoker.pushEnd("e");
+        }
+
+        aboutSkillPath = tempHero.getAboutSkill3();
+        skillDescription.setText(aboutSkillPath);
+    }
+
+
+    public void onSkillSixClicked(View view) {
+        // if invoker
+        if(tempHero.getName().equals("Invoker")) {
+            // ставим в картинки 4 или 5 скиллы в зависимости от combinatoin
+            skillDescription.setText("inside invoker");
+            // генерируем путь
+
+            if(invoker.flag) {
+                skillDescription.setText(invoker.combination);
+                skill_four.setImageDrawable(Drawable.createFromStream(Utils.openImage(invoker.getFullPath(),
+                        getApplicationContext()), null));
+            }
+            else {
+                skillDescription.setText(invoker.combination);
+                skill_five.setImageDrawable(Drawable.createFromStream(Utils.openImage(invoker.getFullPath(),
+                        getApplicationContext()), null));
+
+            }
+            invoker.swapFlag();
+
+        }
+        // отображаем инфу о скилле
+        aboutSkillPath = tempHero.getAboutSkill6();
+        skillDescription.setText(aboutSkillPath);
     }
 }

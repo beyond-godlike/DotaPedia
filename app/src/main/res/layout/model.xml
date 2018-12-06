@@ -2,30 +2,25 @@
 <!-- Cards on mobile default to 8dp margins. {@code layout_margin} needs to be set directly on a
       {@link View} in its layout and won't work when included as part of a style. -->
 
-    <android.support.v7.widget.CardView
+
+<android.support.design.card.MaterialCardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    card_view:cardBackgroundColor="#b1d8b2"
-
-    card_view:cardCornerRadius="4dp"
-    card_view:cardElevation="1dp"
-    card_view:contentPadding="4dp"
-
-    android:layout_marginLeft="8dp"
-    android:layout_marginTop="8dp"
-    android:layout_marginRight="8dp"
-
-    android:foreground="?android:attr/selectableItemBackground"
+    style="@style/Widget.MaterialComponents.CardView"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="@dimen/mtrl_card_spacing"
+    android:layout_marginTop="@dimen/mtrl_card_spacing"
+    android:layout_marginRight="@dimen/mtrl_card_spacing"
+    android:elevation="1dp">
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="2dp"
-        card_view:srcCompat="@drawable/axe"
+        card_view:srcCompat="@drawable/empty"
         android:id="@+id/cardImageView"
         android:scaleType="fitXY" />
 
-</android.support.v7.widget.CardView>
+</android.support.design.card.MaterialCardView>

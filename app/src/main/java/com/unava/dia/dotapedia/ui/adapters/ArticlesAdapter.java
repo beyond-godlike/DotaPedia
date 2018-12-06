@@ -9,7 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.unava.dia.dotapedia.R;
-import com.unava.dia.dotapedia.RecyclerViewClickListener;
+import com.unava.dia.dotapedia.utils.RecyclerViewClickListener;
 import com.unava.dia.dotapedia.ui.activity.Article;
 
 import java.util.ArrayList;

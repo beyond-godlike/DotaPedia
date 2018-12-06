@@ -30,8 +30,8 @@
 
         <ImageView
             android:id="@+id/heroImage"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="256dp"
+            android:layout_height="144dp"
             android:layout_marginTop="16dp"
             android:foreground="@drawable/round_shape"
             android:scaleType="fitXY"

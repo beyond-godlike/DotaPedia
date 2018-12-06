@@ -17,12 +17,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.activity.Pedia" />
         <activity android:name=".ui.activity.Articles" />
         <activity android:name=".ui.activity.Article" />
         <activity android:name=".ui.activity.HeroConstructor" />
         <activity android:name=".ui.activity.ChooseHeroActivity" />
-        <activity android:name=".ui.activity.DrawerInformationHeroes"></activity>
+        <activity android:name=".ui.activity.DrawerInformationHeroes" />
+        <activity android:name=".ui.activity.PlayerInformation"></activity>
     </application>
 
 </manifest>

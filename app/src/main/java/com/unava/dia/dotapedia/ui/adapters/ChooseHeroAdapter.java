@@ -3,22 +3,17 @@ package com.unava.dia.dotapedia.ui.adapters;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.AssetManager;
-import android.graphics.drawable.Drawable;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.unava.dia.dotapedia.utils.ProjectConstants;
 import com.unava.dia.dotapedia.R;
-import com.unava.dia.dotapedia.RecyclerViewClickListener;
+import com.unava.dia.dotapedia.utils.RecyclerViewClickListener;
 import com.unava.dia.dotapedia.ui.activity.HeroConstructor;
 import com.unava.dia.dotapedia.data.model.DotaHero;
 import com.unava.dia.dotapedia.utils.GlideUtil;
-import com.unava.dia.dotapedia.utils.Utils;
-
-import java.io.IOException;
-import java.io.InputStream;
 
 import io.realm.RealmResults;
 
@@ -47,7 +42,8 @@ public class ChooseHeroAdapter extends RecyclerView.Adapter<ChooseHeroViewHolder
     @Override
     public void onBindViewHolder(final ChooseHeroViewHolder holder, int position) {
         //holder.heroImage.setImageDrawable(Drawable.createFromStream(Utils.openImage(holder.heroImage.getIcon(), c), null));
-        GlideUtil.setImageHeroSmall(holder.heroImage, position);
+        GlideUtil.setImageHero(holder.heroImage, position,
+                ProjectConstants.IMAGE_HERO_SMALL_WIDTH, ProjectConstants.IMAGE_HERO_SMALL_HEIGHT);
 
         // ЛИСНЕР ПО КНОПКАМ КАРТОЧКИ
         holder.setItemClickListener(new RecyclerViewClickListener() {

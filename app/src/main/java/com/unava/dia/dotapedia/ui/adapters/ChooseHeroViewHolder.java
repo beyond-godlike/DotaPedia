@@ -3,10 +3,9 @@ package com.unava.dia.dotapedia.ui.adapters;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.unava.dia.dotapedia.R;
-import com.unava.dia.dotapedia.RecyclerViewClickListener;
+import com.unava.dia.dotapedia.utils.RecyclerViewClickListener;
 
 /**
  * Created by Dia on 14.10.2018.

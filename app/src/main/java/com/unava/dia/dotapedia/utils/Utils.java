@@ -5,7 +5,6 @@ import android.content.res.AssetManager;
 import android.util.DisplayMetrics;
 
 import com.unava.dia.dotapedia.R;
-import com.unava.dia.dotapedia.ui.activity.MainActivity;
 import com.unava.dia.dotapedia.data.DbHelper;
 import com.unava.dia.dotapedia.data.XmlHelper;
 import com.unava.dia.dotapedia.data.model.DotaHero;
@@ -62,10 +61,10 @@ public class Utils {
         return stream;
     }
 
-    public static int calculateColumns(Context context) {
+    public static int calculateColumns(Context context, int imageWidth) {
         DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
         float dpWidth = displayMetrics.widthPixels / displayMetrics.density;
-        int columns = (int) (dpWidth /  ((displayMetrics.widthPixels / 6) + 10));
+        int columns = (int) (dpWidth /  (imageWidth + 20));
 
         return columns;
     }

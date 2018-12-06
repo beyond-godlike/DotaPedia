@@ -5,7 +5,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.unava.dia.dotapedia.R;
-import com.unava.dia.dotapedia.RecyclerViewClickListener;
+import com.unava.dia.dotapedia.utils.RecyclerViewClickListener;
 
 /**
  * Created by Dia on 25.09.2018.

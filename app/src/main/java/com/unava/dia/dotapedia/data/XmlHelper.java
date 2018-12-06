@@ -1,8 +1,6 @@
 package com.unava.dia.dotapedia.data;
 
 import android.content.Context;
-
-import com.unava.dia.dotapedia.ui.activity.MainActivity;
 import com.unava.dia.dotapedia.data.model.Hero;
 
 import org.xmlpull.v1.XmlPullParser;

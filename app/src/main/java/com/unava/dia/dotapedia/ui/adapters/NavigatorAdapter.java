@@ -2,17 +2,16 @@ package com.unava.dia.dotapedia.ui.adapters;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.unava.dia.dotapedia.utils.ProjectConstants;
 import com.unava.dia.dotapedia.R;
-import com.unava.dia.dotapedia.RecyclerViewClickListener;
+import com.unava.dia.dotapedia.utils.RecyclerViewClickListener;
 import com.unava.dia.dotapedia.data.model.DotaHero;
 import com.unava.dia.dotapedia.data.model.Hero;
-import com.unava.dia.dotapedia.ui.activity.HeroConstructor;
 import com.unava.dia.dotapedia.utils.GlideUtil;
 import com.unava.dia.dotapedia.utils.Utils;
 
@@ -54,7 +53,8 @@ public class NavigatorAdapter extends RecyclerView.Adapter<NavigatorViewHolder> 
         //BIND DATA
         holder.nameTxt.setText(heroes.get(position).name);
         //holder.heroImage.setImageDrawable(Drawable.createFromStream(Utils.openImage(heroesList.get(position).getIcon(), c), null));
-        GlideUtil.setImageHeroSmall(holder.heroImage, position);
+        GlideUtil.setImageHero(holder.heroImage, position,
+                ProjectConstants.IMAGE_HERO_SMALL_WIDTH, ProjectConstants.IMAGE_HERO_SMALL_HEIGHT);
 
         //ITEM CLICK
         // ЛИСНЕР ПО КНОПКАМ КАРТОЧКИ

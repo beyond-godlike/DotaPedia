@@ -35,12 +35,12 @@ public class DotaHero extends RealmObject {
     private double baseMP = 0.0;
 
     // вещчи
-    private String item0 = "";
-    private String item1 = "";
-    private String item2 = "";
-    private String item3 = "";
-    private String item4 = "";
-    private String item5 = "";
+    private String aboutSkill1 = "";
+    private String aboutSkill2 = "";
+    private String aboutSkill3 = "";
+    private String aboutSkill4 = "";
+    private String aboutSkill5 = "";
+    private String aboutSkill6 = "";
 
     // таланты
     private String talent10 = "";
@@ -177,54 +177,6 @@ public class DotaHero extends RealmObject {
 
     public void setRange(int range) {
         this.range = range;
-    }
-
-    public String getItem0() {
-        return item0;
-    }
-
-    public void setItem0(String item0) {
-        this.item0 = item0;
-    }
-
-    public String getItem1() {
-        return item1;
-    }
-
-    public void setItem1(String item1) {
-        this.item1 = item1;
-    }
-
-    public String getItem2() {
-        return item2;
-    }
-
-    public void setItem2(String item2) {
-        this.item2 = item2;
-    }
-
-    public String getItem3() {
-        return item3;
-    }
-
-    public void setItem3(String item3) {
-        this.item3 = item3;
-    }
-
-    public String getItem4() {
-        return item4;
-    }
-
-    public void setItem4(String item4) {
-        this.item4 = item4;
-    }
-
-    public String getItem5() {
-        return item5;
-    }
-
-    public void setItem5(String item5) {
-        this.item5 = item5;
     }
 
     public String getTalent10() {
@@ -369,5 +321,53 @@ public class DotaHero extends RealmObject {
 
     public void setType(int type) {
         this.type = type;
+    }
+
+    public String getAboutSkill1() {
+        return aboutSkill1;
+    }
+
+    public void setAboutSkill1(String aboutSkill1) {
+        this.aboutSkill1 = aboutSkill1;
+    }
+
+    public String getAboutSkill2() {
+        return aboutSkill2;
+    }
+
+    public void setAboutSkill2(String aboutSkill2) {
+        this.aboutSkill2 = aboutSkill2;
+    }
+
+    public String getAboutSkill3() {
+        return aboutSkill3;
+    }
+
+    public void setAboutSkill3(String aboutSkill3) {
+        this.aboutSkill3 = aboutSkill3;
+    }
+
+    public String getAboutSkill4() {
+        return aboutSkill4;
+    }
+
+    public void setAboutSkill4(String aboutSkill4) {
+        this.aboutSkill4 = aboutSkill4;
+    }
+
+    public String getAboutSkill5() {
+        return aboutSkill5;
+    }
+
+    public void setAboutSkill5(String aboutSkill5) {
+        this.aboutSkill5 = aboutSkill5;
+    }
+
+    public String getAboutSkill6() {
+        return aboutSkill6;
+    }
+
+    public void setAboutSkill6(String aboutSkill6) {
+        this.aboutSkill6 = aboutSkill6;
     }
 }

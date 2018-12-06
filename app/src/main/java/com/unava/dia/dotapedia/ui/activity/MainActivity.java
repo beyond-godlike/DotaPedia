@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.TextView;
 
 import com.unava.dia.dotapedia.R;
 import com.unava.dia.dotapedia.data.DbHelper;
@@ -53,7 +52,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onButtonArticlesClicked(View view) {
-        Intent intent = new Intent(MainActivity.this, Articles.class);
+        //Intent intent = new Intent(MainActivity.this, Articles.class);
+        Intent intent = new Intent(MainActivity.this, PlayerInformation.class);
         startActivity(intent);
     }
 
