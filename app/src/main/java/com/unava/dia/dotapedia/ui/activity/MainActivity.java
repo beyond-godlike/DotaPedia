@@ -52,7 +52,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onButtonArticlesClicked(View view) {
-        //Intent intent = new Intent(MainActivity.this, Articles.class);
+        Intent intent = new Intent(MainActivity.this, Articles.class);
+        startActivity(intent);
+    }
+    public void onButtonCheckMmrClicked(View view) {
         Intent intent = new Intent(MainActivity.this, PlayerInformation.class);
         startActivity(intent);
     }

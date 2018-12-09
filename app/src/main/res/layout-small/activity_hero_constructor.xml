@@ -85,14 +85,16 @@
 
                 <GridLayout
                     android:id="@+id/gridLayout"
-                    android:layout_width="313dp"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="16dp"
                     android:layout_marginEnd="8dp"
                     android:columnCount="2"
                     android:rowCount="9"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintLeft_toRightOf="@+id/imageViewHero"
-                    app:layout_constraintTop_toTopOf="parent">
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/scrollLayout3">
 
                     <ImageView
                         android:id="@+id/imageStrength"
@@ -195,13 +197,11 @@
 
                 <HorizontalScrollView
                     android:id="@+id/scrollLayout3"
-                    android:layout_width="569dp"
+                    android:layout_width="352dp"
                     android:layout_height="78dp"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="8dp"
-                    android:layout_marginBottom="8dp"
-                    app:layout_constraintBottom_toTopOf="@+id/buttonPlus"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toEndOf="@+id/textViewMP"
@@ -234,9 +234,9 @@
                             android:layout_weight="0.09"
                             android:adjustViewBounds="true"
                             android:background="@drawable/shadow"
+                            android:onClick="onSkillTwoClicked"
                             android:padding="8dp"
                             android:scaleType="fitXY"
-                            android:onClick="onSkillTwoClicked"
                             app:srcCompat="@drawable/skill_two" />
 
                         <ImageButton
@@ -245,9 +245,9 @@
                             android:layout_height="80dp"
                             android:adjustViewBounds="true"
                             android:background="@drawable/shadow"
+                            android:onClick="onSkillThreeClicked"
                             android:padding="8dp"
                             android:scaleType="fitXY"
-                            android:onClick="onSkillThreeClicked"
                             app:srcCompat="@drawable/skill_three" />
 
                         <ImageButton
@@ -256,10 +256,10 @@
                             android:layout_height="80dp"
                             android:adjustViewBounds="true"
                             android:background="@drawable/shadow"
+                            android:onClick="onSkillFourClicked"
                             android:padding="8dp"
                             android:scaleType="fitXY"
                             android:visibility="gone"
-                            android:onClick="onSkillFourClicked"
                             app:srcCompat="@drawable/empty_icon" />
 
                         <ImageButton
@@ -268,10 +268,10 @@
                             android:layout_height="80dp"
                             android:adjustViewBounds="true"
                             android:background="@drawable/shadow"
+                            android:onClick="onSkillFiveClicked"
                             android:padding="8dp"
                             android:scaleType="fitXY"
                             android:visibility="gone"
-                            android:onClick="onSkillFiveClicked"
                             app:srcCompat="@drawable/empty_icon" />
 
                         <ImageButton
@@ -280,9 +280,9 @@
                             android:layout_height="80dp"
                             android:adjustViewBounds="true"
                             android:background="@drawable/shadow"
+                            android:onClick="onSkillSixClicked"
                             android:padding="8dp"
                             android:scaleType="fitXY"
-                            android:onClick="onSkillSixClicked"
                             app:srcCompat="@drawable/skill_four" />
 
                     </LinearLayout>
@@ -294,92 +294,92 @@
                     android:id="@+id/buttonPlus"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/btn_new"
+                    android:elevation="2dp"
                     android:minWidth="64dp"
                     android:minHeight="36dp"
+                    android:onClick="onPlusLvlClicked"
                     android:paddingLeft="16dp"
                     android:paddingRight="16dp"
-                    android:layout_margin="8dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_weight="1"
-                    android:elevation="2dp"
-                    android:background="@drawable/btn_new"
-                    android:onClick="onPlusLvlClicked"
                     android:text="+1 LVL"
-                    app:layout_constraintEnd_toStartOf="@+id/buttonMinus"
                     app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/scrollLayout3" />
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBottom_toTopOf="@+id/buttonMinus"
+                    app:layout_constraintStart_toEndOf="@+id/imageViewHero"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <Button
                     android:id="@+id/buttonMinus"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/btn_new"
+                    android:elevation="2dp"
                     android:minWidth="64dp"
                     android:minHeight="36dp"
+                    android:onClick="onMinusLvlClicked"
                     android:paddingLeft="16dp"
                     android:paddingRight="16dp"
-                    android:layout_margin="8dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_weight="1"
-                    android:elevation="2dp"
-                    android:background="@drawable/btn_new"
-                    android:onClick="onMinusLvlClicked"
                     android:text="-1 LVL"
-                    app:layout_constraintEnd_toStartOf="@+id/buttonMaximum"
                     app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toEndOf="@+id/buttonPlus"
-                    app:layout_constraintTop_toBottomOf="@+id/scrollLayout3" />
+                    app:layout_constraintBottom_toTopOf="@+id/buttonMaximum"
+                    app:layout_constraintStart_toEndOf="@+id/imageViewHero"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/buttonPlus" />
 
                 <Button
                     android:id="@+id/buttonMaximum"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/btn_new"
+                    android:elevation="2dp"
                     android:minWidth="64dp"
                     android:minHeight="36dp"
+                    android:onClick="onMaxLvlClicked"
                     android:paddingLeft="16dp"
                     android:paddingRight="16dp"
-                    android:layout_margin="8dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_weight="1"
-                    android:elevation="2dp"
-                    android:background="@drawable/btn_new"
-                    android:onClick="onMaxLvlClicked"
                     android:text="MAX LVL"
-                    app:layout_constraintEnd_toStartOf="@+id/buttonMinimum"
+                    app:layout_constraintBottom_toTopOf="@+id/buttonMinimum"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toEndOf="@+id/buttonMinus"
-                    app:layout_constraintTop_toBottomOf="@+id/scrollLayout3" />
+                    app:layout_constraintStart_toEndOf="@+id/imageViewHero"
+                    app:layout_constraintTop_toBottomOf="@+id/buttonMinus" />
 
                 <Button
                     android:id="@+id/buttonMinimum"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/btn_new"
+                    android:elevation="2dp"
                     android:minWidth="64dp"
                     android:minHeight="36dp"
+                    android:onClick="onMinLvlClicked"
                     android:paddingLeft="16dp"
                     android:paddingRight="16dp"
-                    android:layout_margin="8dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginEnd="8dp"
-                    android:layout_weight="1"
-                    android:elevation="2dp"
-                    android:background="@drawable/btn_new"
-                    android:onClick="onMinLvlClicked"
                     android:text="Reset"
+                    app:layout_constraintBottom_toTopOf="@+id/scrollLayout3"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/buttonMaximum"
-                    app:layout_constraintTop_toBottomOf="@+id/scrollLayout3" />
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/imageViewHero"
+                    app:layout_constraintTop_toBottomOf="@+id/buttonMaximum" />
 
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="24dp"
-                    app:layout_constraintLeft_toLeftOf="@+id/scrollLayout3"
-                    app:layout_constraintTop_toBottomOf="@+id/buttonPlus">
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/gridLayout">
 
                     <TextView
                         android:id="@+id/skillDescription"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="16dp"
                         android:text="skill_name"
