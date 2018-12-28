@@ -10,15 +10,18 @@ import com.unava.dia.dotapedia.utils.RecyclerViewClickListener;
 /**
  * Created by Dia on 25.09.2018.
  */
-
 public class ArticlesViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
     RecyclerViewClickListener itemClickListener;
-    TextView articleName;
+    TextView title;
+    TextView description;
+    TextView date;
 
     public ArticlesViewHolder(View itemView) {
         super(itemView);
 
-        articleName = (TextView) itemView.findViewById(R.id.article_name);
+        title = (TextView) itemView.findViewById(R.id.title);
+        description = (TextView) itemView.findViewById(R.id.description);
+        date = (TextView) itemView.findViewById(R.id.date);
 
         itemView.setOnClickListener(this);
     }
