@@ -13,22 +13,66 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import com.unava.dia.dotapedia.R;
+import com.unava.dia.dotapedia.data.HTMLDownloader;
+import com.unava.dia.dotapedia.data.HTMLParser;
 import com.unava.dia.dotapedia.data.model.UpdateArticle;
+import android.util.Log;
 import com.unava.dia.dotapedia.ui.adapters.ArticlesAdapter;
 
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.schedulers.Schedulers;
+
 import java.util.ArrayList;
+import java.util.List;
 
 public class Articles extends AppCompatActivity {
 
     ArrayList<UpdateArticle> cards = new ArrayList<>();
+
+    HTMLParser htmlParser;
+    String siteUrl = "http://www.dota2.com/news/updates/?l=russian";
+    private int currentPage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_articles);
 
-        new download().execute();
+        currentPage = 1;
+
+       // new download().execute();
+        fillRecyclerView();
     }
+
+    public void fillRecyclerView(){
+        HTMLDownloader.ObservableDownloadHtml(siteUrl + String.valueOf(currentPage))
+                .flatMap(string -> HTMLParser.getObservableHtmlParser(string))
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(result -> showArticles(result), error -> Log.e("Main", "Error: " + error.toString()));
+    }
+
+    private void showArticles(List<UpdateArticle> result){
+        if (result != null) {
+            cards.addAll(result);
+            //view.showArticles(mDataList);
+            setAdapter();
+        }
+    }
+
+    public void setAdapter() {
+        //SET UP RECYCLERVIEW
+        RecyclerView rv = (RecyclerView) findViewById(R.id.rv_articles);
+        rv.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+
+        //ADAPTER
+        ArticlesAdapter adapter = new ArticlesAdapter(getApplicationContext(), cards, this);
+        rv.setAdapter(adapter);
+    }
+
+
+
+    /*
 
     public void setAdapter() {
         //SET UP RECYCLERVIEW
@@ -97,4 +141,5 @@ public class Articles extends AppCompatActivity {
             setAdapter();
         }
     }
+    */
 }

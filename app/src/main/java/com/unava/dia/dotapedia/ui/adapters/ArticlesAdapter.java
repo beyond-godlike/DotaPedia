@@ -2,6 +2,7 @@ package com.unava.dia.dotapedia.ui.adapters;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +11,7 @@ import android.text.Html;
 
 import com.unava.dia.dotapedia.R;
 import com.unava.dia.dotapedia.data.model.UpdateArticle;
+import com.unava.dia.dotapedia.ui.activity.Article;
 import com.unava.dia.dotapedia.utils.RecyclerViewClickListener;
 
 import java.util.ArrayList;
@@ -60,9 +62,10 @@ public class ArticlesAdapter extends RecyclerView.Adapter<ArticlesViewHolder> {
             public void onItemClick(int pos) {
                 int buttonIndex = holder.getAdapterPosition();
 
-                //Intent intent = new Intent(activity, Article.class);
-                //intent.setFlags(buttonIndex);
-                //activity.startActivity(intent);
+                Intent intent = new Intent(activity, Article.class);
+                intent.setFlags(buttonIndex);
+                intent.putExtra("URL_TO_FULL_ARTICLE", articlesList.get(buttonIndex).getUrlToFullStr());
+                activity.startActivity(intent);
 
                 // открываем статью, которая соответствует индексу через
                 // Intent и передаем туда индекс
