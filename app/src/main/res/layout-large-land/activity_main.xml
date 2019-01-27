@@ -54,7 +54,7 @@
             android:onClick="onButtonPediaClicked"
             android:paddingLeft="16dp"
             android:paddingRight="16dp"
-            android:text="Pedia"
+            android:text="@string/btn_pedia"
             tools:ignore="HardcodedText" />
 
         <Button
@@ -70,7 +70,7 @@
             android:onClick="onButtonArticlesClicked"
             android:paddingLeft="16dp"
             android:paddingRight="16dp"
-            android:text="Articles" />
+            android:text="@string/btn_updates" />
 
         <Button
             android:id="@+id/buttonCheckMmr"
@@ -85,7 +85,7 @@
             android:onClick="onButtonCheckMmrClicked"
             android:paddingLeft="16dp"
             android:paddingRight="16dp"
-            android:text="Check MMR" />
+            android:text="@string/btn_check_mmr" />
 
         <Button
             android:id="@+id/buttonHeroConstructor"
@@ -100,6 +100,6 @@
             android:onClick="onButtonHeroConstructorClicked"
             android:paddingLeft="16dp"
             android:paddingRight="16dp"
-            android:text="Hero constructor" />
+            android:text="@string/btn_hero_constructor" />
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

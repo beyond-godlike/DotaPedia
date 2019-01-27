@@ -1,5 +1,10 @@
 <resources>
     <string name="app_name">DotaPedia</string>
+    <string name="btn_pedia">Pedia</string>
+    <string name="btn_updates">Updates</string>
+    <string name="btn_check_mmr">Check MMR</string>
+    <string name="btn_hero_constructor">Hero constructor</string>
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <string-array name="tips">

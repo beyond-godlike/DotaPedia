@@ -20,9 +20,13 @@ import io.reactivex.schedulers.Schedulers;
 import com.unava.dia.dotapedia.network.APIClient;
 import com.unava.dia.dotapedia.R;
 import com.unava.dia.dotapedia.network.service.AccInformation;
+import com.unava.dia.dotapedia.network.service.ErrorResponse;
 import com.unava.dia.dotapedia.utils.GlideUtil;
+import com.unava.dia.dotapedia.utils.ToastUtil;
+import com.unava.dia.dotapedia.utils.Utils;
 
 import butterknife.ButterKnife;
+import retrofit2.HttpException;
 
 public class PlayerInformation extends AppCompatActivity {
     AccInformation accInfo;
@@ -64,21 +68,33 @@ public class PlayerInformation extends AppCompatActivity {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<AccInformation>() {
                     @Override public void onError(Throwable e) {
-                        e.printStackTrace();
-                        Log.d("ddd", "In onError()");
+                        ErrorResponse error = Utils.parseError(e);
+                        //Send this error object back to UI for display.
+                        textViewSoloMmr.setText(error.soloCompetitiveRank);
+                        textViewPartyMmr.setText(error.competitiveRank);
+                        textViewEstimatedMmr.setText("null");
                     }
 
                     @Override
                     public void onComplete() {
                         Log.d("ddd", "In onCompleted()");
-
                         // пихаем инфу в вью
-                        textViewSoloMmr.setText(accInfo.soloCompetitiveRank);
-                        textViewPartyMmr.setText(accInfo.competitiveRank);
-                        textViewEstimatedMmr.setText(accInfo.mmrEstimate.estimate.toString());
-                        avatarUrl = accInfo.profile.avatarfull;
+                        try {
+                            textViewSoloMmr.setText(accInfo.soloCompetitiveRank);
+                            textViewPartyMmr.setText(accInfo.competitiveRank);
+                            textViewEstimatedMmr.setText(accInfo.mmrEstimate.estimate.toString());
 
-                        GlideUtil.setPlayerIcon(playerIcon, avatarUrl);
+                            avatarUrl = accInfo.profile.avatarfull;
+                            GlideUtil.setPlayerIcon(playerIcon, avatarUrl);
+                        }
+                        catch (Exception e) {
+                            textViewSoloMmr.setText("null");
+                            textViewPartyMmr.setText("null");
+                            textViewEstimatedMmr.setText("null");
+
+                           playerIcon.setImageResource(0);
+                           ToastUtil.showToast(getApplicationContext(), "Player not found!");
+                        }
                     }
 
                     @Override
@@ -89,7 +105,6 @@ public class PlayerInformation extends AppCompatActivity {
                     @Override public void onNext(AccInformation accInformation) {
                         Log.d("ddd", "In onNext()");
                         accInfo = accInformation;
-                        Log.d("ddd", accInformation.mmrEstimate.estimate.toString());
                     }
                 });
     }
