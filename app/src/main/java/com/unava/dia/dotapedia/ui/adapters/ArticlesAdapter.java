@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -51,6 +52,7 @@ public class ArticlesAdapter extends RecyclerView.Adapter<ArticlesViewHolder> {
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
             holder.description.setText(Html.fromHtml(articlesList.get(position).getDescriptionStr(),
                     Html.FROM_HTML_MODE_COMPACT));
+            //holder.description.setEllipsize(TextUtils.TruncateAt.END);
         } else {
             holder.description.setText(Html.fromHtml(articlesList.get(position).getDescriptionStr()));
         }

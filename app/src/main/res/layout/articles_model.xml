@@ -1,79 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.card.MaterialCardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    style="@style/Widget.MaterialComponents.CardView"
+    android:id="@+id/articles_model"
+    style="@style/MyCardViewStyle"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:id="@+id/articles_model"
     android:layout_marginLeft="@dimen/mtrl_card_spacing"
     android:layout_marginTop="@dimen/mtrl_card_spacing"
     android:layout_marginRight="@dimen/mtrl_card_spacing"
-    android:elevation="4dp">
+    android:elevation="4dp"
+    card_view:cardBackgroundColor="@android:color/background_light">
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:theme="@style/AppTheme">
 
         <TextView
             android:id="@+id/title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
             android:padding="8dp"
             android:text="title"
             android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat"
             android:textSize="18sp"
+            android:theme="@style/AppTheme"
+            android:typeface="normal"
             card_view:fontFamily="sans-serif"
             card_view:layout_constraintEnd_toEndOf="parent"
             card_view:layout_constraintStart_toStartOf="parent"
             card_view:layout_constraintTop_toTopOf="parent" />
 
-        <ScrollView
-            android:id="@+id/descriptionScroll"
+        <TextView
+            android:id="@+id/description"
             android:layout_width="match_parent"
             android:layout_height="250dp"
-            android:scrollbars="vertical"
-            android:textAlignment="center"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            android:ellipsize="end"
+            android:maxLines="14"
+            android:padding="8dp"
+            android:text="description"
+            android:textAppearance="@style/TextAppearance.AppCompat"
             android:theme="@style/AppTheme"
             card_view:layout_constraintEnd_toEndOf="parent"
+            card_view:layout_constraintHorizontal_bias="0.0"
             card_view:layout_constraintStart_toStartOf="parent"
-            card_view:layout_constraintTop_toBottomOf="@+id/title">
-
-            <TextView
-                android:id="@+id/description"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginRight="8dp"
-                android:layout_marginBottom="8dp"
-                android:padding="8dp"
-                android:text="description"
-                android:theme="@style/AppTheme" />
-        </ScrollView>
+            card_view:layout_constraintTop_toBottomOf="@+id/title" />
 
         <TextView
             android:id="@+id/date"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
+            android:fontFamily="sans-serif"
             android:padding="8dp"
+            android:paddingEnd="8dp"
+            android:paddingBottom="8dp"
             android:text="date"
-            android:textSize="18sp"
+            android:textAlignment="textEnd"
+            android:textAppearance="@style/TextAppearance.AppCompat"
+            android:theme="@style/AppTheme"
             card_view:layout_constraintEnd_toEndOf="parent"
             card_view:layout_constraintStart_toStartOf="parent"
-            card_view:layout_constraintTop_toBottomOf="@+id/descriptionScroll" />
+            card_view:layout_constraintTop_toBottomOf="@+id/description" />
 
     </android.support.constraint.ConstraintLayout>
 
