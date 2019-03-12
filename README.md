@@ -1,6 +1,6 @@
 ## Inspired by Dota 2 
 
-######DotaPedia includes OpenDota API and build on MVP pattern architecture using Glide, Retrofit, RxJava and ButterKnife.
+###### DotaPedia includes OpenDota API and build on MVP pattern architecture using Glide, Retrofit, RxJava and ButterKnife.
 
 ![main](https://pp.userapi.com/c850736/v850736379/643e0/Yv-sHuwsFjg.jpg)
 
